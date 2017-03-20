@@ -1,15 +1,21 @@
 package com.atguigu.bibiq.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.base.BaseActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+    public int getLayoutId() {
+        return R.layout.activity_welcome;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+        protected void initListener() {
     }
 }
