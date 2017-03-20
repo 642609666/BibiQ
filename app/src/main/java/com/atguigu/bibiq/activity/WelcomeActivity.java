@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseActivity;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import butterknife.InjectView;
 
@@ -52,6 +53,12 @@ public class WelcomeActivity extends BaseActivity {
         Glide.with(this)
                 .load(R.drawable.dwonlo)
                 .asGif()
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                //磁盘高速缓存策略
+                // DiskCacheStrategy.NONE 什么都不缓存
+                // DiskCacheStrategy.SOURCE 仅仅只缓存原来的全分辨率的图像。
+                // DiskCacheStrategy.RESULT 仅仅缓存最终的图像，即，降低分辨率后的（或者是转换后的）
+                // DiskCacheStrategy.ALL 缓存所有版本的图像（默认行为）
                 .into(ivWelcomeLoading);
 
         //设置5秒自动进入主界面
