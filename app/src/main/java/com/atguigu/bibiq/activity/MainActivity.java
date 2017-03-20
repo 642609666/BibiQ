@@ -1,20 +1,30 @@
 package com.atguigu.bibiq.activity;
 
-import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.adapter.MainViewPagerAdapter;
+import com.atguigu.bibiq.base.BaseActivity;
+import com.atguigu.bibiq.base.BaseFragment;
+import com.atguigu.bibiq.find.findFragment;
+import com.atguigu.bibiq.play.PlayFragment;
+import com.atguigu.bibiq.recommend.RecommendFragment;
+import com.atguigu.bibiq.tothem.ToThemFragment;
+import com.atguigu.bibiq.type.TypeFragment;
 
-import butterknife.ButterKnife;
+import java.util.ArrayList;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.title_navigation)
     ImageView titleNavigation;
@@ -30,18 +40,65 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton fab;
     @InjectView(R.id.title_tv_isregister)
     TextView titleTvIsregister;
+    @InjectView(R.id.tablayout)
+    TabLayout tablayout;
+    @InjectView(R.id.view_pager)
+    ViewPager viewPager;
+    @InjectView(R.id.nestedScrollView)
+    NestedScrollView nestedScrollView;
+    private ArrayList<BaseFragment> mList;
+
+    private MainViewPagerAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
+    public int getLayoutId() {
+        return R.layout.activity_main;
+    }
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        toolbar.setTitle("这事什么");
-//        toolbar.setSubtitle("这是上拉没有啦");
-//        setSupportActionBar(toolbar);  //把toolbar添加到actionbar里
+    @Override
+    protected void initData() {
+        //加载fragment碎片
+        initFragment();
 
+        adapter = new MainViewPagerAdapter(this.getSupportFragmentManager(), mList);
+
+        viewPager.setAdapter(adapter);
+
+        //关联ViewPager
+        tablayout.setupWithViewPager(viewPager);
+
+        tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+    }
+
+    private void initFragment() {
+        mList = new ArrayList<>();
+        mList.add(new PlayFragment());
+        mList.add(new RecommendFragment());
+        mList.add(new ToThemFragment());
+        mList.add(new TypeFragment());
+        mList.add(new findFragment());
+    }
+
+    @Override
+    protected void initListener() {
+        // ViewPager切换时NestedScrollView滑动到顶部
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                nestedScrollView.scrollTo(0, 0);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @OnClick({R.id.title_navigation, R.id.title_icon, R.id.title_game, R.id.title_down, R.id.title_search, R.id.fab, R.id.title_tv_isregister})

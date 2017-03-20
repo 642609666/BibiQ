@@ -30,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initListener();
     }
 
+
     /**
      * 由子类设置布局文件
      *

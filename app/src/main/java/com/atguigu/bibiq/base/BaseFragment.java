@@ -55,14 +55,24 @@ public abstract class BaseFragment extends Fragment {
         loadingPager.loadData();
     }
 
-
-    protected abstract void initData(String json);
-
-
+    /**
+     * 添加布局
+     * @return
+     */
     public abstract int getLayoutid();
-
+    /**
+     * 数据地址
+     * @return
+     */
     //每一个fragment返回的地址
     public abstract String getChildUrl();
+
+    /**
+     * 解析数据
+     * @param json
+     */
+    protected abstract void initData(String json);
+
 
     @Override
     public void onDestroy() {
