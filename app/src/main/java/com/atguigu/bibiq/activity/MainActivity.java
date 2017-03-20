@@ -50,6 +50,11 @@ public class MainActivity extends BaseActivity {
 
     private MainViewPagerAdapter adapter;
 
+    /**
+     * 临时缓存fragment
+     */
+    private BaseFragment tempFragment;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_main;
@@ -64,6 +69,8 @@ public class MainActivity extends BaseActivity {
 
         viewPager.setAdapter(adapter);
 
+        //添加复用,避免重复初始化
+        viewPager.setOffscreenPageLimit(5);
         //关联ViewPager
         tablayout.setupWithViewPager(viewPager);
 
@@ -86,6 +93,7 @@ public class MainActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
 
             }
 

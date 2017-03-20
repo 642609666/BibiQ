@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.recommend;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
@@ -30,6 +31,7 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     protected void initData(String json) {
+        Log.e("TAG", "推荐数据初始化");
         tvName.setText("推荐页面");
     }
 }

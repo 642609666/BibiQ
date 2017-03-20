@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.find;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
@@ -30,6 +31,7 @@ public class findFragment extends BaseFragment {
 
     @Override
     protected void initData(String json) {
+        Log.e("TAG", "发现数据初始化");
         tvName.setText("发现页面");
     }
 }

@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.tothem;
 
+import android.util.Log;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
@@ -30,6 +31,7 @@ public class ToThemFragment extends BaseFragment {
 
     @Override
     protected void initData(String json) {
+        Log.e("TAG", "追番数据初始化");
         tvName.setText("追番页面");
     }
 }
