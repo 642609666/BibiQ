@@ -11,8 +11,8 @@ import android.util.Log;
  * Created by ${
  * 李岩
  * QQ/微信: 642609666} on 3/11 0011.
- * 功能:
- */
+ * 功能:捕获异常
+ * */
 
 public class MyApplication extends Application {
 

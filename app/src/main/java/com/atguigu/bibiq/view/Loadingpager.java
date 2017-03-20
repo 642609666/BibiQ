@@ -6,12 +6,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.utils.UiUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import butterknife.InjectView;
+import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
@@ -23,6 +26,8 @@ import okhttp3.Call;
 
 public abstract class Loadingpager extends FrameLayout {
     private final Context mContext;
+    @InjectView(R.id.imageView)
+    ImageView imageView;
 
 
     private int STATE_LOADING = 1; //加载中
@@ -178,6 +183,12 @@ public abstract class Loadingpager extends FrameLayout {
     }
 
     protected abstract void onSuccess(ResultState resultState, View sucessView);
+
+    @OnClick(R.id.imageView)
+    public void onClick() {
+        //重新加载布局
+        init();
+    }
 
     public enum ResultState {
 

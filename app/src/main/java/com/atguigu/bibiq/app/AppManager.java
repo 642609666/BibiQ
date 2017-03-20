@@ -8,8 +8,8 @@ import java.util.Stack;
  * Created by ${
  * 李岩
  * QQ/微信: 642609666} on 3/11 0011.
- * 功能:
- */
+ * 功能:仿栈自定义activity增删改
+ * */
 
 public class AppManager {
     /**

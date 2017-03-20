@@ -18,7 +18,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //实现抽象方法由子类去自己设置布局
         setContentView(getLayoutId());
+
+        //butterknife绑定
         ButterKnife.inject(this);
 
         //初始化数据
@@ -48,6 +51,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //butterknife解绑
         ButterKnife.reset(this);
         AppManager.getInstance().remove(this);
     }
