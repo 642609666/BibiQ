@@ -5,10 +5,13 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,8 @@ import com.atguigu.bibiq.play.PlayFragment;
 import com.atguigu.bibiq.recommend.RecommendFragment;
 import com.atguigu.bibiq.tothem.ToThemFragment;
 import com.atguigu.bibiq.type.TypeFragment;
+import com.atguigu.bibiq.utils.ConstantAddress;
+import com.atguigu.bibiq.utils.LoadNet;
 
 import java.util.ArrayList;
 
@@ -53,6 +58,36 @@ public class MainActivity extends BaseActivity {
     LinearLayout llMore;
     @InjectView(R.id.drawlayout)
     DrawerLayout drawlayout;
+    @InjectView(R.id.iv_left_icon)
+    ImageView ivLeftIcon;
+    @InjectView(R.id.tv_left_name)
+    TextView tvLeftName;
+    @InjectView(R.id.iv_left_theme)
+    ImageView ivLeftTheme;
+    @InjectView(R.id.rg_left)
+    RadioGroup rgLeft;
+    @InjectView(R.id.rb_left_home)
+    RadioButton rbLeftHome;
+    @InjectView(R.id.rb_left_big_member)
+    RadioButton rbLeftBigMember;
+    @InjectView(R.id.rb_left_integral)
+    RadioButton rbLeftIntegral;
+    @InjectView(R.id.rb_left_cache)
+    RadioButton rbLeftCache;
+    @InjectView(R.id.rb_left_look)
+    RadioButton rbLeftLook;
+    @InjectView(R.id.rb_left_collect)
+    RadioButton rbLeftCollect;
+    @InjectView(R.id.rb_left_record)
+    RadioButton rbLeftRecord;
+    @InjectView(R.id.rb_left_attention)
+    RadioButton rbLeftAttention;
+    @InjectView(R.id.rb_left_wallet)
+    RadioButton rbLeftWallet;
+    @InjectView(R.id.rb_left_theme)
+    RadioButton rbLeftTheme;
+    @InjectView(R.id.rb_left_setting)
+    RadioButton rbLeftSetting;
     private ArrayList<BaseFragment> mList;
 
     private MainViewPagerAdapter adapter;
@@ -66,8 +101,30 @@ public class MainActivity extends BaseActivity {
     protected void initData() {
         //加载fragment碎片
         initFragment();
+        //加载适配器
+        initAdapter();
+        //联网请求数据
+        initFromNet();
+    }
 
+    private void initFromNet() {
+        LoadNet.getDataNet(ConstantAddress.BBQ_HOME, new LoadNet.OnGetNet() {
+            @Override
+            public void onSuccess(String content) {
+                Log.e("TAG", "主页数据请求成功" + content);
+            }
 
+            @Override
+            public void onFailure(String content) {
+                Log.e("TAG", "主页数据请求失败" + content);
+            }
+        });
+    }
+
+    /**
+     * 加载适配器
+     */
+    private void initAdapter() {
         adapter = new MainViewPagerAdapter(this.getSupportFragmentManager(), mList);
 
         viewPager.setAdapter(adapter);
@@ -78,7 +135,6 @@ public class MainActivity extends BaseActivity {
         tablayout.setupWithViewPager(viewPager);
 
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
     }
 
 
@@ -94,34 +150,102 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initListener() {
         // ViewPager切换时NestedScrollView滑动到顶部
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                nestedScrollView.scrollTo(0, 0);
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
+        //设置rudion 按钮点击事件
+        switchRb();
+    }
+
+    private void switchRb() {
+        rgLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                nestedScrollView.scrollTo(0, 0);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_left_home://首页
+                        Toast.makeText(MainActivity.this, "首页", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.rb_left_big_member://我的大会员
+                        Toast.makeText(MainActivity.this, "我的大会员", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_integral://会员积分
+                        Toast.makeText(MainActivity.this, "会员积分", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_cache://离线缓存
+                        Toast.makeText(MainActivity.this, "离线缓存", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_look://稍后再看
+                        Toast.makeText(MainActivity.this, "稍后再看", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_collect://我的收藏
+                        Toast.makeText(MainActivity.this, "我的收藏", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_record://历史记录
+                        Toast.makeText(MainActivity.this, "历史记录", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_attention://我的关注
+                        Toast.makeText(MainActivity.this, "我的关注", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_wallet://B币钱包
+                        Toast.makeText(MainActivity.this, "B币钱包", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_theme://主题选择
+                        Toast.makeText(MainActivity.this, "主题选择", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    case R.id.rb_left_setting://设置与帮助
+                        Toast.makeText(MainActivity.this, "设置与帮助", Toast.LENGTH_SHORT).show();
+                        drawlayout.closeDrawers();
+                        break;
+                    default:
+                        drawlayout.closeDrawers();
+                        break;
+                }
 
             }
         });
+
+        //默认是主页
+        rgLeft.check(R.id.rb_left_home);
     }
 
-    @OnClick({R.id.title_game, R.id.title_down,
-            R.id.title_search, R.id.fab, R.id.ll_more})
+    /**
+     * false表示白天
+     * true 表示黑天
+     */
+    private Boolean isTheme = false;
+
+    @OnClick({R.id.title_game, R.id.title_down, R.id.iv_left_icon,
+            R.id.title_search, R.id.fab, R.id.ll_more, R.id.iv_left_theme})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_more: //点击出来侧滑
                 Toast.makeText(MainActivity.this, "侧滑出来", Toast.LENGTH_SHORT).show();
                 drawlayout.openDrawer(Gravity.LEFT);
-                //初始化侧滑
-                initMenu();
+
+                break;
+            case R.id.iv_left_icon: //侧滑头像
+                Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.title_game://游戏
                 Toast.makeText(MainActivity.this, "游戏", Toast.LENGTH_SHORT).show();
@@ -135,10 +259,14 @@ public class MainActivity extends BaseActivity {
             case R.id.fab://悬浮按钮
                 Toast.makeText(MainActivity.this, "悬浮按钮", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.iv_left_theme://主题
+                if (isTheme) {
+                    ivLeftTheme.setImageResource(R.drawable.ic_switch_night);
+                } else {
+                    ivLeftTheme.setImageResource(R.drawable.ic_switch_daily);
+                }
+                isTheme = !isTheme;
+                break;
         }
     }
-
-    private void initMenu() {
-    }
-
 }
