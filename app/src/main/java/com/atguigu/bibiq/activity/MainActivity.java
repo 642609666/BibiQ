@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,12 +19,10 @@ import com.atguigu.bibiq.adapter.MainViewPagerAdapter;
 import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.find.findFragment;
-import com.atguigu.bibiq.play.PlayFragment;
+import com.atguigu.bibiq.home.HomeFragment;
 import com.atguigu.bibiq.recommend.RecommendFragment;
 import com.atguigu.bibiq.tothem.ToThemFragment;
 import com.atguigu.bibiq.type.TypeFragment;
-import com.atguigu.bibiq.utils.ConstantAddress;
-import com.atguigu.bibiq.utils.LoadNet;
 
 import java.util.ArrayList;
 
@@ -103,22 +100,7 @@ public class MainActivity extends BaseActivity {
         initFragment();
         //加载适配器
         initAdapter();
-        //联网请求数据
-        initFromNet();
-    }
 
-    private void initFromNet() {
-        LoadNet.getDataNet(ConstantAddress.BBQ_HOME, new LoadNet.OnGetNet() {
-            @Override
-            public void onSuccess(String content) {
-                Log.e("TAG", "主页数据请求成功" + content);
-            }
-
-            @Override
-            public void onFailure(String content) {
-                Log.e("TAG", "主页数据请求失败" + content);
-            }
-        });
     }
 
     /**
@@ -140,7 +122,7 @@ public class MainActivity extends BaseActivity {
 
     private void initFragment() {
         mList = new ArrayList<>();
-        mList.add(new PlayFragment());
+        mList.add(new HomeFragment());
         mList.add(new RecommendFragment());
         mList.add(new ToThemFragment());
         mList.add(new TypeFragment());
@@ -175,7 +157,6 @@ public class MainActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_left_home://首页
-                        Toast.makeText(MainActivity.this, "首页", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.rb_left_big_member://我的大会员
                         Toast.makeText(MainActivity.this, "我的大会员", Toast.LENGTH_SHORT).show();

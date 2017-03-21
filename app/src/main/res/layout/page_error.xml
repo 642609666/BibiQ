@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:id="@+id/rl_err"
+                android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_error_page"
-        android:id="@+id/imageView"/>
+        android:layout_gravity="center"
+        android:src="@drawable/ic_load_empty"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:text="加载数据错误,点击重试!"
         android:textColor="#000000"
         android:textSize="16sp"/>
-</LinearLayout>
+</RelativeLayout>

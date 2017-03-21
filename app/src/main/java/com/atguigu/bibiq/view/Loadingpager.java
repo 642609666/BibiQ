@@ -6,15 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.utils.UiUtils;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
@@ -26,8 +25,7 @@ import okhttp3.Call;
 
 public abstract class Loadingpager extends FrameLayout {
     private final Context mContext;
-    @InjectView(R.id.imageView)
-    ImageView imageView;
+    RelativeLayout rl_err;
 
 
     private int STATE_LOADING = 1; //加载中
@@ -75,6 +73,8 @@ public abstract class Loadingpager extends FrameLayout {
         //加载布局
         if (errorView == null) {
             errorView = View.inflate(mContext, R.layout.page_error, null);
+            //初始化错误图片,重新联网加载
+            rl_err = (RelativeLayout) errorView.findViewById(R.id.rl_err);
             this.addView(errorView, params);
         }
         //加载布局
@@ -86,6 +86,13 @@ public abstract class Loadingpager extends FrameLayout {
         //显示布局
         showSafeView();
 
+        rl_err.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadData();
+                Toast.makeText(getContext(), "重新加载", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showSafeView() {
@@ -183,12 +190,6 @@ public abstract class Loadingpager extends FrameLayout {
     }
 
     protected abstract void onSuccess(ResultState resultState, View sucessView);
-
-    @OnClick(R.id.imageView)
-    public void onClick() {
-        //重新加载布局
-        init();
-    }
 
     public enum ResultState {
 

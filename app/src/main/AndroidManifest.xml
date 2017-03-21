@@ -3,6 +3,7 @@
           package="com.atguigu.bibiq">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -20,6 +21,8 @@
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="screenSize|orientation|keyboardHidden">
+        </activity>
+        <activity android:name=".home.adapter.WebActivity">
         </activity>
     </application>
 
