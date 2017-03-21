@@ -31,6 +31,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import static com.atguigu.bibiq.R.id.ll_home_title_btn;
+
 /**
  * Created by ${
  * 李岩
@@ -52,6 +54,8 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
     private final int STREAMING = 2; //直播
     private final int DRAWING = 3; //绘画专区
     private final int LIFE = 4;//生活娱乐
+    private final int SING = 5;//唱见遇见
+    private final int MOBILEGAMELIVE = 6;//手游直播
     private LayoutInflater inflater;
     private List<HomeStreamingBean.DataBean> homeStreamingBeanData;
 
@@ -71,7 +75,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
      */
     @Override
     public int getItemCount() {
-        return 3;
+        return 7;
     }
 
     /**
@@ -92,6 +96,10 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             temp = DRAWING;
         } else if (LIFE == position) {
             temp = LIFE;
+        } else if (SING == position) {
+            temp = SING;
+        } else if (MOBILEGAMELIVE == position) {
+            temp = MOBILEGAMELIVE;
         }
         return temp;
     }
@@ -115,6 +123,10 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             return new MyDrawingViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
         } else if (LIFE == viewType) {
             return new MyLifeViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (SING == viewType) {
+            return new MySingViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
         }
 
         return null;
@@ -149,6 +161,15 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         } else if (DRAWING == position) {
             MyDrawingViewHolder myDrawingViewHolder = (MyDrawingViewHolder) holder;
             myDrawingViewHolder.setData(mContext, datas);
+        } else if (LIFE == position) {
+            MyLifeViewHolder myLifeViewHolder = (MyLifeViewHolder) holder;
+            myLifeViewHolder.setData(mContext, datas);
+        } else if (SING == position) {
+            MySingViewHolder mySingViewHolder = (MySingViewHolder) holder;
+            mySingViewHolder.setData(mContext, datas);
+        } else if (MOBILEGAMELIVE == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas);
         }
     }
 
@@ -315,6 +336,9 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         }
     }
 
+    /**
+     * 绘画专区
+     */
     static class MyDrawingViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.iv_home_title_icon)
         ImageView ivHomeTitleIcon;
@@ -324,7 +348,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTitleNumber;
         @InjectView(R.id.tv_home_title_right)
         TextView tvHomeTitleRight;
-        @InjectView(R.id.ll_home_title_btn)
+        @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
         MyGridView gridview;
@@ -334,16 +358,66 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTailNumber;
         @InjectView(R.id.tv_home_tail_right)
         TextView tvHomeTailRight;
+
+        private HomeBeanAdapter mAdapter;
+
         public MyDrawingViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
         }
 
-        public void setData(Context context, HomeBean.DataBean datas) {
+        public void setData(final Context context, HomeBean.DataBean datas) {
+            mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(0).getLives());
 
+            gridview.setAdapter(mAdapter);
+
+            //设置标头
+            Glide.with(context)
+                    .load(datas.getPartitions().get(0).getPartition().getSub_icon().getSrc())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .into(ivHomeTitleIcon);
+            //设置名字
+            tvHomeTitleName.setText(datas.getPartitions().get(0).getPartition().getName());
+            //设置直播人数
+            tvHomeTitleNumber.setText(datas.getPartitions().get(0).getPartition().getCount() + "");
+            //假数据
+            tvHomeTailNumber.setText(datas.getPartitions().get(0).getPartition().getCount() * 3 + "");
+
+            //设置点击事件
+
+            //设置点击事件
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            llHomeTitleBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "绘画专区", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            btnHomeTailMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "查看更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvHomeTailRight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
+    /**
+     * 生活专区
+     */
     static class MyLifeViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.iv_home_title_icon)
         ImageView ivHomeTitleIcon;
@@ -353,7 +427,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTitleNumber;
         @InjectView(R.id.tv_home_title_right)
         TextView tvHomeTitleRight;
-        @InjectView(R.id.ll_home_title_btn)
+        @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
         MyGridView gridview;
@@ -363,10 +437,210 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTailNumber;
         @InjectView(R.id.tv_home_tail_right)
         TextView tvHomeTailRight;
+        private HomeLiftAdapter mAdapter;
+
         public MyLifeViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
         }
+
+        public void setData(final Context context, HomeBean.DataBean datas) {
+            mAdapter = new HomeLiftAdapter(context, datas.getPartitions().get(1).getLives());
+
+            gridview.setAdapter(mAdapter);
+
+            //设置标头
+            Glide.with(context)
+                    .load(datas.getPartitions().get(1).getPartition().getSub_icon().getSrc())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .into(ivHomeTitleIcon);
+            //设置名字
+            tvHomeTitleName.setText(datas.getPartitions().get(1).getPartition().getName());
+            //设置直播人数
+            tvHomeTitleNumber.setText(datas.getPartitions().get(1).getPartition().getCount() + "");
+            //假数据
+            tvHomeTailNumber.setText(datas.getPartitions().get(1).getPartition().getCount() * 3 + "");
+
+            //设置点击事件
+
+            //设置点击事件
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            llHomeTitleBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "生活专区", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            btnHomeTailMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "查看更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvHomeTailRight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
+    private class MySingViewHolder extends RecyclerView.ViewHolder {
+        @InjectView(R.id.iv_home_title_icon)
+        ImageView ivHomeTitleIcon;
+        @InjectView(R.id.tv_home_title_name)
+        TextView tvHomeTitleName;
+        @InjectView(R.id.tv_home_title_number)
+        TextView tvHomeTitleNumber;
+        @InjectView(R.id.tv_home_title_right)
+        TextView tvHomeTitleRight;
+        @InjectView(ll_home_title_btn)
+        LinearLayout llHomeTitleBtn;
+        @InjectView(R.id.gridview)
+        MyGridView gridview;
+        @InjectView(R.id.btn_home_tail_more)
+        Button btnHomeTailMore;
+        @InjectView(R.id.tv_home_tail_number)
+        TextView tvHomeTailNumber;
+        @InjectView(R.id.tv_home_tail_right)
+        TextView tvHomeTailRight;
+        private HomeLiftAdapter mAdapter;
+
+        public MySingViewHolder(View view) {
+            super(view);
+            ButterKnife.inject(this, view);
+        }
+
+        public void setData(final Context context, HomeBean.DataBean datas) {
+            mAdapter = new HomeLiftAdapter(context, datas.getPartitions().get(2).getLives());
+
+            gridview.setAdapter(mAdapter);
+
+            //设置标头
+            Glide.with(context)
+                    .load(datas.getPartitions().get(2).getPartition().getSub_icon().getSrc())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .into(ivHomeTitleIcon);
+            //设置名字
+            tvHomeTitleName.setText(datas.getPartitions().get(2).getPartition().getName());
+            //设置直播人数
+            tvHomeTitleNumber.setText(datas.getPartitions().get(2).getPartition().getCount() + "");
+            //假数据
+            tvHomeTailNumber.setText(datas.getPartitions().get(2).getPartition().getCount() * 3 + "");
+
+            //设置点击事件
+
+            //设置点击事件
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            llHomeTitleBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "唱见遇见", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            btnHomeTailMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "查看更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvHomeTailRight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private class MyMobileGameLiveViewHolder extends RecyclerView.ViewHolder {
+        @InjectView(R.id.iv_home_title_icon)
+        ImageView ivHomeTitleIcon;
+        @InjectView(R.id.tv_home_title_name)
+        TextView tvHomeTitleName;
+        @InjectView(R.id.tv_home_title_number)
+        TextView tvHomeTitleNumber;
+        @InjectView(R.id.tv_home_title_right)
+        TextView tvHomeTitleRight;
+        @InjectView(ll_home_title_btn)
+        LinearLayout llHomeTitleBtn;
+        @InjectView(R.id.gridview)
+        MyGridView gridview;
+        @InjectView(R.id.btn_home_tail_more)
+        Button btnHomeTailMore;
+        @InjectView(R.id.tv_home_tail_number)
+        TextView tvHomeTailNumber;
+        @InjectView(R.id.tv_home_tail_right)
+        TextView tvHomeTailRight;
+
+        private HomeBeanAdapter mAdapter;
+
+        public MyMobileGameLiveViewHolder(View view) {
+            super(view);
+            ButterKnife.inject(this, view);
+        }
+
+        public void setData(final Context context, HomeBean.DataBean datas) {
+            mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(3).getLives());
+
+            gridview.setAdapter(mAdapter);
+
+            //设置标头
+            Glide.with(context)
+                    .load(datas.getPartitions().get(3).getPartition().getSub_icon().getSrc())
+                    .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                    .into(ivHomeTitleIcon);
+            //设置名字
+            tvHomeTitleName.setText(datas.getPartitions().get(3).getPartition().getName());
+            //设置直播人数
+            tvHomeTitleNumber.setText(datas.getPartitions().get(3).getPartition().getCount() + "");
+            //假数据
+            tvHomeTailNumber.setText(datas.getPartitions().get(3).getPartition().getCount() * 3 + "");
+
+            //设置点击事件
+
+            //设置点击事件
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            llHomeTitleBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "手游直播", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            btnHomeTailMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "查看更多", Toast.LENGTH_SHORT).show();
+                }
+            });
+            tvHomeTailRight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 }

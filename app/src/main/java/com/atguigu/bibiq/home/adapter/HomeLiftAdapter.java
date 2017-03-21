@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
-import com.atguigu.bibiq.bean.HomeStreamingBean;
+import com.atguigu.bibiq.bean.HomeBean;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -21,25 +21,26 @@ import butterknife.InjectView;
  * Created by ${
  * 李岩
  * QQ/微信: 642609666} on 3/21 0021.
- * 功能:直播适配器
+ * 功能:除了直播通用适配器
  */
-public class StreamingBaseAdapter extends BaseAdapter {
+public class HomeLiftAdapter extends BaseAdapter {
     private final Context mContext;
-    private final List<HomeStreamingBean.DataBean> homeStreamingBeanData;
+    private final List<HomeBean.DataBean.PartitionsBean.LivesBean> lives;
 
-    public StreamingBaseAdapter(Context context, List<HomeStreamingBean.DataBean> homeStreamingBeanData) {
+
+    public HomeLiftAdapter(Context context, List<HomeBean.DataBean.PartitionsBean.LivesBean> lives) {
         this.mContext = context;
-        this.homeStreamingBeanData = homeStreamingBeanData;
+        this.lives = lives;
     }
 
     @Override
     public int getCount() {
-        return 12;
+        return 4;
     }
 
     @Override
     public Object getItem(int position) {
-        return homeStreamingBeanData.get(position);
+        return lives.get(position);
     }
 
     @Override
@@ -59,13 +60,13 @@ public class StreamingBaseAdapter extends BaseAdapter {
         }
         //加载图片
         Glide.with(mContext)
-                .load(homeStreamingBeanData.get(position).getCover().getSrc())
+                .load(lives.get(position).getCover().getSrc())
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(viewHolder.ivStreamingImage);
-        viewHolder.tvStreamingArea.setText("#" + homeStreamingBeanData.get(position).getArea() + "#");
-        viewHolder.tvStreamingTitle.setText(homeStreamingBeanData.get(position).getTitle());
-        viewHolder.tvStreamingNickname.setText(homeStreamingBeanData.get(position).getOwner().getName());
-        int online = homeStreamingBeanData.get(position).getOnline();
+        viewHolder.tvStreamingArea.setText("#" + lives.get(position).getArea() + "#");
+        viewHolder.tvStreamingTitle.setText(lives.get(position).getTitle());
+        viewHolder.tvStreamingNickname.setText(lives.get(position).getOwner().getName());
+        int online = lives.get(position).getOnline();
         if (online >= 10000) {
             float number = online;
             viewHolder.tvStreamingOnline.setText((float) (Math.round(number / 10000 * 10)) / 10 + "万");
