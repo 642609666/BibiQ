@@ -5,6 +5,13 @@
               android:background="@color/back_main"
               android:orientation="horizontal">
 
+    <LinearLayout
+        android:id="@+id/ll_more"
+        android:layout_width="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        >
     <ImageView
         android:id="@+id/title_navigation"
         android:layout_width="wrap_content"
@@ -30,7 +37,7 @@
         android:layout_weight="1"
         android:text="未登录"
         android:textColor="@color/title_white"/>
-
+    </LinearLayout>
     <ImageView
         android:id="@+id/title_game"
         android:layout_width="wrap_content"

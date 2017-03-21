@@ -3,9 +3,12 @@ package com.atguigu.bibiq.activity;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,14 +49,13 @@ public class MainActivity extends BaseActivity {
     ViewPager viewPager;
     @InjectView(R.id.nestedScrollView)
     NestedScrollView nestedScrollView;
+    @InjectView(R.id.ll_more)
+    LinearLayout llMore;
+    @InjectView(R.id.drawlayout)
+    DrawerLayout drawlayout;
     private ArrayList<BaseFragment> mList;
 
     private MainViewPagerAdapter adapter;
-
-    /**
-     * 临时缓存fragment
-     */
-    private BaseFragment tempFragment;
 
     @Override
     public int getLayoutId() {
@@ -64,6 +66,7 @@ public class MainActivity extends BaseActivity {
     protected void initData() {
         //加载fragment碎片
         initFragment();
+
 
         adapter = new MainViewPagerAdapter(this.getSupportFragmentManager(), mList);
 
@@ -77,6 +80,7 @@ public class MainActivity extends BaseActivity {
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
     }
+
 
     private void initFragment() {
         mList = new ArrayList<>();
@@ -109,14 +113,15 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.title_navigation, R.id.title_icon, R.id.title_game, R.id.title_down, R.id.title_search, R.id.fab, R.id.title_tv_isregister})
+    @OnClick({R.id.title_game, R.id.title_down,
+            R.id.title_search, R.id.fab, R.id.ll_more})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.title_navigation: //点击出来侧滑
+            case R.id.ll_more: //点击出来侧滑
                 Toast.makeText(MainActivity.this, "侧滑出来", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.title_icon://头像
-                Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
+                drawlayout.openDrawer(Gravity.LEFT);
+                //初始化侧滑
+                initMenu();
                 break;
             case R.id.title_game://游戏
                 Toast.makeText(MainActivity.this, "游戏", Toast.LENGTH_SHORT).show();
@@ -130,9 +135,10 @@ public class MainActivity extends BaseActivity {
             case R.id.fab://悬浮按钮
                 Toast.makeText(MainActivity.this, "悬浮按钮", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.title_tv_isregister://是否登录
-                Toast.makeText(MainActivity.this, "是否登录", Toast.LENGTH_SHORT).show();
-                break;
         }
     }
+
+    private void initMenu() {
+    }
+
 }

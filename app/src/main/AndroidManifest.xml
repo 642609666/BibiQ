@@ -3,10 +3,10 @@
           package="com.atguigu.bibiq">
 
     <application
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".app.MyApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.WelcomeActivity">
@@ -16,9 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"
-
-        android:configChanges="screenSize|orientation|keyboardHidden">
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden">
         </activity>
     </application>
 
