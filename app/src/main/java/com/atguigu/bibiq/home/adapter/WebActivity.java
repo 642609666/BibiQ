@@ -2,6 +2,7 @@ package com.atguigu.bibiq.home.adapter;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebResourceRequest;
@@ -9,6 +10,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +31,7 @@ public class WebActivity extends AppCompatActivity {
     @InjectView(R.id.webview)
     WebView webview;
 
+    private ProgressBar mProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,10 @@ public class WebActivity extends AppCompatActivity {
         ButterKnife.inject(this);
         String web_json = getIntent().getStringExtra("web_json");
         String[] split = web_json.split(",,");
+        mProgressBar = new ProgressBar(this);
+        final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(mProgressBar)
+                .show();
         WebSettings webSettings = webview.getSettings();
         //设置支持js
         webSettings.setJavaScriptEnabled(true);
@@ -53,6 +60,7 @@ public class WebActivity extends AppCompatActivity {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                dialog.dismiss();
             }
 
             @Override

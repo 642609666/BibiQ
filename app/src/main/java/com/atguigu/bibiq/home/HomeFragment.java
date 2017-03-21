@@ -1,13 +1,8 @@
 package com.atguigu.bibiq.home;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -16,12 +11,13 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.bean.HomeBean;
+import com.atguigu.bibiq.bean.HomeStreamingBean;
 import com.atguigu.bibiq.home.adapter.HomeRecyclerView;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.atguigu.bibiq.utils.LoadNet;
-import com.atguigu.bibiq.utils.SpUtils;
 
-import butterknife.ButterKnife;
+import java.util.List;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -42,6 +38,14 @@ public class HomeFragment extends BaseFragment {
     LinearLayout scrollView;
 
     private HomeRecyclerView mRecyclerView;
+    /**
+     * 主页解析的数据除了直播
+     */
+    private HomeBean.DataBean mData;
+    /**
+     * 主页直播的数据
+     */
+    private List<HomeStreamingBean.DataBean> mHomeStreamingBeanData;
 
     @Override
     public int getLayoutid() {
@@ -58,7 +62,10 @@ public class HomeFragment extends BaseFragment {
         Log.e("TAG", "直播数据初始化");
         //联网请求数据
         initFromNet(json);
+
+
     }
+
 
     /**
      * 联网请求数据
@@ -66,64 +73,61 @@ public class HomeFragment extends BaseFragment {
      * @param json
      */
     private void initFromNet(String json) {
+        /**
+         * 解析主页除了直播的数据
+         */
         LoadNet.getDataNet(ConstantAddress.BBQ_HOME, new LoadNet.OnGetNet() {
             @Override
             public void onSuccess(String content) {
                 Log.e("TAG", "主页数据请求成功");
                 //处理解析的json数据
-                disposeData(content);
-                //保存数据
-                SpUtils.saveSP(getActivity(), "json", content);
-
+                HomeBean homeBean = JSON.parseObject(content, HomeBean.class);
+                //得到数据
+                mData = homeBean.getData();
+                //继续请求直播数据
+                initFromNetData();
             }
 
             @Override
             public void onFailure(String content) {
                 Log.e("TAG", "主页数据请求失败" + content);
-                //读取SP数据
-                String tempJson = SpUtils.getSP(getActivity(), "json");
-                if (TextUtils.isEmpty(tempJson) || tempJson == null) {
-                    return;
-                }
-                disposeData(tempJson);
             }
         });
     }
 
-    private void disposeData(String json) {
-        HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
-        //得到数据
-        HomeBean.DataBean data = homeBean.getData();
+    private void initFromNetData() {
+        /**
+         * 解析直播的数据
+         */
+        LoadNet.getDataNet(ConstantAddress.STREAMING, new LoadNet.OnGetNet() {
+            @Override
+            public void onSuccess(String content) {
+                Log.e("TAG", "主页直播请求成功");
+                //设置数据
+                if (mData.getBanner().size() > 0 && mData != null) {
+                    mRecyclerView = new HomeRecyclerView(getActivity(), mData);
+                }
+                //处理解析的json数据
+                HomeStreamingBean homeStreamingBean = JSON.parseObject(content, HomeStreamingBean.class);
+                //得到直播数据
+                mHomeStreamingBeanData = homeStreamingBean.getData();
 
-        //数据正常
-        if (data != null && data.getBanner().size() > 0) {
-            //传给适配器
-            Log.e("TAG", "数据解析正常,正在通往适配器的道路上");
-            mRecyclerView = new HomeRecyclerView(getActivity(), data);
+                //适配器获取直播数据
+                if (mRecyclerView != null) {
+                    mRecyclerView.setmHomeStreamingBeanData(mHomeStreamingBeanData);
+                }
 
-
-            //设置适配器
-            recyclerview.setAdapter(mRecyclerView);
-            //设置布局管理器
-            recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-            //设置布局管理器
-            // recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2, GridLayoutManager.VERTICAL, false));
-
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.inject(this, rootView);
-        return rootView;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.reset(this);
+                //设置适配器
+                recyclerview.setAdapter(mRecyclerView);
+                //设置布局管理器
+                recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+            }
+            @Override
+            public void onFailure(String content) {
+                Log.e("TAG", "主页数据请求失败" + content);
+                //读取SP数据
+            }
+        });
     }
 
     @OnClick(R.id.btn_home_more)
