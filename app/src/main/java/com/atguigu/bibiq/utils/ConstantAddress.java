@@ -32,4 +32,10 @@ public class ConstantAddress {
      */
     public static final String BBQ_FIND_HOT = "http://app.bilibili.com/x/v2/search/hot?appkey=1d8b6e7d45233436&build=501000&limit=50&mobi_app" +
             "=android&platform=android&ts=1490014710000&sign=e5ddf94fa9a0d6876cb85756c37c4adc";
+    /**
+     * 分区数据
+     */
+    public static final String BBQ_TYPE = "http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&" +
+            "platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+
 }

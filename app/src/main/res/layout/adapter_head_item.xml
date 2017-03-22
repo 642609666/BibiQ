@@ -4,9 +4,10 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+
     <com.atguigu.bibiq.view.MyGridView
-        android:id="@+id/gridview"
+        android:id="@+id/gridview_type"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:numColumns="5"></com.atguigu.bibiq.view.MyGridView>
+        android:layout_height="match_parent"
+        android:numColumns="4"></com.atguigu.bibiq.view.MyGridView>
 </LinearLayout>

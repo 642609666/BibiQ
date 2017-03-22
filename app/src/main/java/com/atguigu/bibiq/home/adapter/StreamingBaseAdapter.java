@@ -84,7 +84,7 @@ public class StreamingBaseAdapter extends BaseAdapter {
         viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "position == " + finalPosition, Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "position = " + finalPosition, Toast.LENGTH_SHORT).show();
             }
         });
         return convertView;
