@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeBean;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
+import com.atguigu.bibiq.view.MyGridView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.youth.banner.Banner;
@@ -88,10 +89,10 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         if (BANNER == position) {
             temp = BANNER;
-        } else if (TYPE == position) {
-            temp = TYPE;
         } else if (STREAMING == position) {
             temp = STREAMING;
+        } else if (TYPE == position) {
+            temp = TYPE;
         } else if (DRAWING == position) {
             temp = DRAWING;
         } else if (LIFE == position) {
@@ -115,12 +116,12 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (BANNER == viewType) {
             return new MyBannerViewHolder(inflater.inflate(R.layout.adapter_banner, null));
-        } else if (TYPE == viewType) {
-            return new MyTypeViewHolder(inflater.inflate(R.layout.adapter_type, null));
         } else if (STREAMING == viewType) {
             return new MyStreamingViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (TYPE == viewType) {
+            return new MyTypeViewHolder(inflater.inflate(R.layout.adapter_type, null));
         } else if (DRAWING == viewType) {
-            return new MyDrawingViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+            return new MyDrawingViewHolder(inflater.inflate(R.layout.adapter_drawing, null));
         } else if (LIFE == viewType) {
             return new MyLifeViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
         } else if (SING == viewType) {
@@ -152,12 +153,12 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         if (BANNER == position) {
             MyBannerViewHolder myBannerViewHolder = (MyBannerViewHolder) holder;
             myBannerViewHolder.setData(mContext, datas.getBanner(), position);
-        } else if (TYPE == position) {
-            MyTypeViewHolder myTypeViewHolder = (MyTypeViewHolder) holder;
-            myTypeViewHolder.setData(mContext, 5);
         } else if (STREAMING == position) {
             MyStreamingViewHolder myStreamingViewHolder = (MyStreamingViewHolder) holder;
             myStreamingViewHolder.setData(mContext, homeStreamingBeanData);
+        } else if (TYPE == position) {
+            MyTypeViewHolder myTypeViewHolder = (MyTypeViewHolder) holder;
+            myTypeViewHolder.setData(mContext, 5);
         } else if (DRAWING == position) {
             MyDrawingViewHolder myDrawingViewHolder = (MyDrawingViewHolder) holder;
             myDrawingViewHolder.setData(mContext, datas);
@@ -355,8 +356,8 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTitleRight;
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
-        @InjectView(R.id.gridview)
-        GridView gridview;
+//        @InjectView(R.id.gridview)
+        MyGridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -369,12 +370,13 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         public MyDrawingViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
+            this.gridview = (MyGridView) view.findViewById(R.id.gridview_drawable);
         }
 
         public void setData(final Context context, HomeBean.DataBean datas) {
             mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(0).getLives());
 
-            gridview.setAdapter(mAdapter);
+            this.gridview.setAdapter(mAdapter);
 
             //设置标头
             Glide.with(context)
@@ -391,12 +393,13 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             //设置点击事件
 
             //设置点击事件
-            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           /*gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
+
 
             llHomeTitleBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -442,7 +445,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTailNumber;
         @InjectView(R.id.tv_home_tail_right)
         TextView tvHomeTailRight;
-        private HomeLiftAdapter mAdapter;
+        private HomeBeanAdapter mAdapter;
 
         public MyLifeViewHolder(View view) {
             super(view);
@@ -450,7 +453,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         }
 
         public void setData(final Context context, HomeBean.DataBean datas) {
-            mAdapter = new HomeLiftAdapter(context, datas.getPartitions().get(1).getLives());
+            mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(1).getLives());
 
             gridview.setAdapter(mAdapter);
 
@@ -520,7 +523,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTailNumber;
         @InjectView(R.id.tv_home_tail_right)
         TextView tvHomeTailRight;
-        private HomeLiftAdapter mAdapter;
+        private HomeBeanAdapter mAdapter;
 
         public MySingViewHolder(View view) {
             super(view);
@@ -528,7 +531,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         }
 
         public void setData(final Context context, HomeBean.DataBean datas) {
-            mAdapter = new HomeLiftAdapter(context, datas.getPartitions().get(2).getLives());
+            mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(2).getLives());
 
             gridview.setAdapter(mAdapter);
 

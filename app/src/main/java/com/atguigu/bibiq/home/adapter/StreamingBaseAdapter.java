@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
@@ -79,6 +80,13 @@ public class StreamingBaseAdapter extends BaseAdapter {
             viewHolder.tvStreamingOnline.setText(online + "");
         }
 
+        final int finalPosition = position;
+        viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "position == " + finalPosition, Toast.LENGTH_SHORT).show();
+            }
+        });
         return convertView;
     }
 

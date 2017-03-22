@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeBean;
@@ -49,7 +50,7 @@ public class HomeBeanAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.adapter_streaming_iten, null);
@@ -66,6 +67,13 @@ public class HomeBeanAdapter extends BaseAdapter {
         viewHolder.tvStreamingArea.setText("#" + lives.get(position).getArea() + "#");
         viewHolder.tvStreamingTitle.setText(lives.get(position).getTitle());
         viewHolder.tvStreamingNickname.setText(lives.get(position).getOwner().getName());
+
+        viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
         int online = lives.get(position).getOnline();
         if (online >= 10000) {
             float number = online;

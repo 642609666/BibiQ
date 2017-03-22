@@ -96,37 +96,42 @@ public class HomeFragment extends BaseFragment {
         LoadNet.getDataNet(ConstantAddress.STREAMING, new LoadNet.OnGetNet() {
             @Override
             public void onSuccess(String content) {
-                //停止刷新
-                swipeRefreshLayout.setRefreshing(false);
-                Log.e("TAG", "主页数据请求成功");
-                //处理主页的json数据
-                HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
-                //得到主页数据
-                if (homeBean != null) {
-                    mData = homeBean.getData();
-                }
+                try {
+                    //停止刷新
+                    swipeRefreshLayout.setRefreshing(false);
+                    Log.e("TAG", "主页数据请求成功");
+                    //处理主页的json数据
+                    HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
+                    //得到主页数据
+                    if (homeBean != null) {
+                        mData = homeBean.getData();
+                    }
 
-                //设置数据
-                if (mData.getBanner().size() > 0 && mData != null) {
-                    mRecyclerView = new HomeRecyclerView(getActivity(), mData);
-                }
-                //处理解析的直播json数据
-                HomeStreamingBean homeStreamingBean = JSON.parseObject(content, HomeStreamingBean.class);
-                //得到直播数据
-                if (homeStreamingBean != null) {
-                    mHomeStreamingBeanData = homeStreamingBean.getData();
-                }
+                    //设置数据
+                    if (mData.getBanner().size() > 0 && mData != null) {
+                        mRecyclerView = new HomeRecyclerView(getActivity(), mData);
+                    }
+                    //处理解析的直播json数据
+                    HomeStreamingBean homeStreamingBean = JSON.parseObject(content, HomeStreamingBean.class);
+                    //得到直播数据
+                    if (homeStreamingBean != null) {
+                        mHomeStreamingBeanData = homeStreamingBean.getData();
+                    }
 
-                //适配器获取直播数据
-                if (mRecyclerView != null) {
-                    mRecyclerView.setmHomeStreamingBeanData(mHomeStreamingBeanData);
+                    //适配器获取直播数据
+                    if (mRecyclerView != null) {
+                        mRecyclerView.setmHomeStreamingBeanData(mHomeStreamingBeanData);
+                    }
+                    //刷新适配器
+                    mRecyclerView.notifyDataSetChanged();
+                    //设置适配器
+                    recyclerview.setAdapter(mRecyclerView);
+                    //设置布局管理器
+                    recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("TAG", "加载网络错误" + e.getMessage());
                 }
-                //刷新适配器
-                mRecyclerView.notifyDataSetChanged();
-                //设置适配器
-                recyclerview.setAdapter(mRecyclerView);
-                //设置布局管理器
-                recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
             }
 
