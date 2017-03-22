@@ -5,12 +5,12 @@
               android:background="@color/home_fragment_back"
               android:gravity="center"
               android:orientation="vertical"
-              android:padding="10dp">
+              android:padding="5dp">
 
     <ImageView
         android:id="@+id/iv_type_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
 
     <TextView
         android:id="@+id/tv_type_name"
