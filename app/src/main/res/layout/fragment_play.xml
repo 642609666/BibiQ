@@ -1,31 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:background="@color/home_fragment_back"
-            android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/scrollView"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swi"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_fragment_back">
+
+    <android.support.v7.widget.RecyclerView
+
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <Button
-            android:id="@+id/btn_home_more"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_white"
-            android:textColor="@color/title_cinereus"
-            android:layout_below="@id/scrollView"
-            android:text="更多直播"/>
-    </LinearLayout>
-
-
-</ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

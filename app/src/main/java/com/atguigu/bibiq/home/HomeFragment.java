@@ -1,11 +1,10 @@
 package com.atguigu.bibiq.home;
 
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
@@ -19,7 +18,6 @@ import com.atguigu.bibiq.utils.LoadNet;
 import java.util.List;
 
 import butterknife.InjectView;
-import butterknife.OnClick;
 
 /**
  * Created by ${
@@ -32,10 +30,9 @@ public class HomeFragment extends BaseFragment {
 
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
-    @InjectView(R.id.btn_home_more)
-    Button btnHomeMore;
-    @InjectView(R.id.scrollView)
-    LinearLayout scrollView;
+
+    @InjectView(R.id.swi)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private HomeRecyclerView mRecyclerView;
     /**
@@ -62,7 +59,27 @@ public class HomeFragment extends BaseFragment {
         Log.e("TAG", "直播数据初始化");
         //联网请求数据
         initFromNet(json);
+        //下拉刷新
+        refresh();
+    }
 
+    /**
+     * 下拉刷新
+     */
+    private void refresh() {
+        swipeRefreshLayout.setDistanceToTriggerSync(100);
+        //设置颜色
+        swipeRefreshLayout.setColorSchemeColors(Color.BLACK, Color.RED);
+        //设置背景颜色
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.holo_orange_dark);
+        //下拉刷新
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initFromNet("");
+
+            }
+        });
 
     }
 
@@ -83,7 +100,9 @@ public class HomeFragment extends BaseFragment {
                 //处理解析的json数据
                 HomeBean homeBean = JSON.parseObject(content, HomeBean.class);
                 //得到数据
-                mData = homeBean.getData();
+                if (homeBean != null) {
+                    mData = homeBean.getData();
+                }
                 //继续请求直播数据
                 initFromNetData();
             }
@@ -103,6 +122,8 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onSuccess(String content) {
                 Log.e("TAG", "主页直播请求成功");
+                //停止刷新
+                swipeRefreshLayout.setRefreshing(false);
                 //设置数据
                 if (mData.getBanner().size() > 0 && mData != null) {
                     mRecyclerView = new HomeRecyclerView(getActivity(), mData);
@@ -116,12 +137,15 @@ public class HomeFragment extends BaseFragment {
                 if (mRecyclerView != null) {
                     mRecyclerView.setmHomeStreamingBeanData(mHomeStreamingBeanData);
                 }
-
+                //刷新适配器
+                mRecyclerView.notifyDataSetChanged();
                 //设置适配器
                 recyclerview.setAdapter(mRecyclerView);
                 //设置布局管理器
                 recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
             }
+
             @Override
             public void onFailure(String content) {
                 Log.e("TAG", "主页数据请求失败" + content);
@@ -130,8 +154,4 @@ public class HomeFragment extends BaseFragment {
         });
     }
 
-    @OnClick(R.id.btn_home_more)
-    public void onClick() {
-        Toast.makeText(getActivity(), "更多", Toast.LENGTH_SHORT).show();
-    }
 }

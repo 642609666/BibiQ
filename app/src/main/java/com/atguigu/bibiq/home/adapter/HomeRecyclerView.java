@@ -3,6 +3,7 @@ package com.atguigu.bibiq.home.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -283,7 +284,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(R.id.tv_home_title_right)
         TextView tvHomeTitleRight;
         @InjectView(R.id.gridview)
-        GridView gridview;
+        MyGridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -296,6 +297,12 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         public MyStreamingViewHolder(View view) {
             super(view);
             ButterKnife.inject(this, view);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.e("TAG", "222222222");
+                }
+            });
         }
 
         public void setData(final Context context, List<HomeStreamingBean.DataBean> homeStreamingBeanData) {
@@ -304,12 +311,11 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
 
                 gridview.setAdapter(mAdapter);
 
-
-                //设置点击事件
                 gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "position==" + position, Toast.LENGTH_SHORT).show();
+                        Log.e("TAG", "11111");
                     }
                 });
 
@@ -493,7 +499,10 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         }
     }
 
-    private class MySingViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * 唱见遇见
+     */
+    static class MySingViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.iv_home_title_icon)
         ImageView ivHomeTitleIcon;
         @InjectView(R.id.tv_home_title_name)
@@ -568,7 +577,10 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         }
     }
 
-    private class MyMobileGameLiveViewHolder extends RecyclerView.ViewHolder {
+    /**
+     * 手游直播
+     */
+    static class MyMobileGameLiveViewHolder extends RecyclerView.ViewHolder {
         @InjectView(R.id.iv_home_title_icon)
         ImageView ivHomeTitleIcon;
         @InjectView(R.id.tv_home_title_name)

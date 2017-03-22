@@ -4,7 +4,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -49,8 +48,8 @@ public class MainActivity extends BaseActivity {
     TabLayout tablayout;
     @InjectView(R.id.view_pager)
     ViewPager viewPager;
-    @InjectView(R.id.nestedScrollView)
-    NestedScrollView nestedScrollView;
+   /* @InjectView(R.id.nestedScrollView)
+    NestedScrollView nestedScrollView;*/
     @InjectView(R.id.ll_more)
     LinearLayout llMore;
     @InjectView(R.id.drawlayout)
