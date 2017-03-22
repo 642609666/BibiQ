@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:drawableLeft="@drawable/ic_user_female"
+            android:drawableLeft="@drawable/ic_watching"
             android:gravity="right"
             android:text="2323"
             android:textSize="12sp"/>

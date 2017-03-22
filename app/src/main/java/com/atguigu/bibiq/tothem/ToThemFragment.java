@@ -1,12 +1,9 @@
 package com.atguigu.bibiq.tothem;
 
 import android.util.Log;
-import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
-
-import butterknife.InjectView;
 
 /**
  * Created by ${
@@ -16,12 +13,10 @@ import butterknife.InjectView;
  */
 
 public class ToThemFragment extends BaseFragment {
-    @InjectView(R.id.tv_name)
-    TextView tvName;
 
     @Override
     public int getLayoutid() {
-        return R.layout.fragment_find;
+        return R.layout.fragment_play;
     }
 
     @Override
@@ -32,6 +27,5 @@ public class ToThemFragment extends BaseFragment {
     @Override
     protected void initData(String json) {
         Log.e("TAG", "追番数据初始化");
-        tvName.setText("追番页面");
     }
 }
