@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeBean;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
-import com.atguigu.bibiq.view.MyGridView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.youth.banner.Banner;
@@ -284,7 +283,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(R.id.tv_home_title_right)
         TextView tvHomeTitleRight;
         @InjectView(R.id.gridview)
-        MyGridView gridview;
+        GridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -357,7 +356,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
-        MyGridView gridview;
+        GridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -436,7 +435,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
-        MyGridView gridview;
+        GridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -514,7 +513,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
-        MyGridView gridview;
+        GridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)
@@ -592,7 +591,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
         @InjectView(R.id.gridview)
-        MyGridView gridview;
+        GridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
         @InjectView(R.id.tv_home_tail_number)

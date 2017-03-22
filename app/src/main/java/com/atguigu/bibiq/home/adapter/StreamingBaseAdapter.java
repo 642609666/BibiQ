@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -25,6 +26,7 @@ import butterknife.InjectView;
  */
 public class StreamingBaseAdapter extends BaseAdapter {
     private final Context mContext;
+    private Random mRandom = new Random();
     private final List<HomeStreamingBean.DataBean> homeStreamingBeanData;
 
     public StreamingBaseAdapter(Context context, List<HomeStreamingBean.DataBean> homeStreamingBeanData) {
@@ -57,6 +59,10 @@ public class StreamingBaseAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+        int nextInt = mRandom.nextInt(homeStreamingBeanData.size() - 1);
+
+        //虚拟变位
+        position = nextInt;
         //加载图片
         Glide.with(mContext)
                 .load(homeStreamingBeanData.get(position).getCover().getSrc())

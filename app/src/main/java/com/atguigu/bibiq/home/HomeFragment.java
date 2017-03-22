@@ -89,49 +89,33 @@ public class HomeFragment extends BaseFragment {
      *
      * @param json
      */
-    private void initFromNet(String json) {
-        /**
-         * 解析主页除了直播的数据
-         */
-        LoadNet.getDataNet(ConstantAddress.BBQ_HOME, new LoadNet.OnGetNet() {
-            @Override
-            public void onSuccess(String content) {
-                Log.e("TAG", "主页数据请求成功");
-                //处理解析的json数据
-                HomeBean homeBean = JSON.parseObject(content, HomeBean.class);
-                //得到数据
-                if (homeBean != null) {
-                    mData = homeBean.getData();
-                }
-                //继续请求直播数据
-                initFromNetData();
-            }
-
-            @Override
-            public void onFailure(String content) {
-                Log.e("TAG", "主页数据请求失败" + content);
-            }
-        });
-    }
-
-    private void initFromNetData() {
+    private void initFromNet(final String json) {
         /**
          * 解析直播的数据
          */
         LoadNet.getDataNet(ConstantAddress.STREAMING, new LoadNet.OnGetNet() {
             @Override
             public void onSuccess(String content) {
-                Log.e("TAG", "主页直播请求成功");
                 //停止刷新
                 swipeRefreshLayout.setRefreshing(false);
+                Log.e("TAG", "主页数据请求成功");
+                //处理主页的json数据
+                HomeBean homeBean = JSON.parseObject(json, HomeBean.class);
+                //得到主页数据
+                if (homeBean != null) {
+                    mData = homeBean.getData();
+                }
+
                 //设置数据
                 if (mData.getBanner().size() > 0 && mData != null) {
                     mRecyclerView = new HomeRecyclerView(getActivity(), mData);
                 }
-                //处理解析的json数据
+                //处理解析的直播json数据
                 HomeStreamingBean homeStreamingBean = JSON.parseObject(content, HomeStreamingBean.class);
                 //得到直播数据
-                mHomeStreamingBeanData = homeStreamingBean.getData();
+                if (homeStreamingBean != null) {
+                    mHomeStreamingBeanData = homeStreamingBean.getData();
+                }
 
                 //适配器获取直播数据
                 if (mRecyclerView != null) {
@@ -149,9 +133,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onFailure(String content) {
                 Log.e("TAG", "主页数据请求失败" + content);
-                //读取SP数据
             }
         });
     }
-
 }
