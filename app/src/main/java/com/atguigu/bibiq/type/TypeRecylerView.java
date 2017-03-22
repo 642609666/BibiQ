@@ -9,7 +9,10 @@ import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.type.bean.TypeBean;
 import com.atguigu.bibiq.view.MyGridView;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -21,15 +24,17 @@ import butterknife.InjectView;
  * 功能:分区页面适配器
  */
 public class TypeRecylerView extends RecyclerView.Adapter {
-
-    private final Context mContext;
-    private final LayoutInflater inflater;
-    private final int HEAD = 0;
     private String[] heads = {"直播", "番剧", "动画", "音乐", "舞蹈", "游戏", "科技", "生活", "鬼畜", "时尚",
             "广告", "娱乐", "电影", "电视剧", "游戏中心"};
+    private final List<TypeBean.DataBean> datas;
+    private final Context mContext;
+    private final LayoutInflater inflater;
+    private final int HEAD = 0; //头部数据
 
-    public TypeRecylerView(Context context) {
+
+    public TypeRecylerView(Context context, List<TypeBean.DataBean> data) {
         this.mContext = context;
+        this.datas = data;
         inflater = LayoutInflater.from(context);
     }
 

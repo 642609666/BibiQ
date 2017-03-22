@@ -9,6 +9,7 @@
     <color name="title_cinereus">#7F7F7F</color>
     <color name="hot_huise">#CFCFCF</color>
     <color name="home_fragment_back">#EAEAEA</color>
+    <color name="type_fragment_back">#DCDCDC</color>
     <color name="title_back">#FAFAFA</color>
 
 </resources>
