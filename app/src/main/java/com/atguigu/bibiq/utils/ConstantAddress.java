@@ -9,6 +9,9 @@ package com.atguigu.bibiq.utils;
 
 public class ConstantAddress {
     /**
+     * 公共地址
+     */
+    /**
      * 首页地址
      */
     public static final String BBQ_HOME = "http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_" +
@@ -23,5 +26,10 @@ public class ConstantAddress {
      */
     public static final String BBQ_RECOMMERD = "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network" +
             "=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
-    ;
+
+    /**
+     * 发现界面热搜数据
+     */
+    public static final String BBQ_FIND_HOT = "http://app.bilibili.com/x/v2/search/hot?appkey=1d8b6e7d45233436&build=501000&limit=50&mobi_app" +
+            "=android&platform=android&ts=1490014710000&sign=e5ddf94fa9a0d6876cb85756c37c4adc";
 }

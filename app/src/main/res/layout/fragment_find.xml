@@ -50,11 +50,27 @@
         <com.zhy.view.flowlayout.TagFlowLayout
             android:id="@+id/ivest_hot_fl"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="110dp"
             android:layout_marginTop="10dp"
             android:background="@null"
             android:padding="20dp"
             atguigu:max_select="-1"/>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/newstd"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/ivest_hot_fl1"
+                android:layout_width="fill_parent"
+                android:layout_height="200dp"
+                android:background="@null"
+                android:padding="20dp"
+                atguigu:max_select="-1"/>
+        </android.support.v4.widget.NestedScrollView>
 
         <LinearLayout
             android:id="@+id/ll_find_more"
@@ -79,11 +95,11 @@
 
             <TextView
                 android:id="@+id/tv_find_more"
-                android:gravity="left"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:gravity="left"
                 android:text="查看更多"
                 android:textColor="@color/title_black"/>
 
