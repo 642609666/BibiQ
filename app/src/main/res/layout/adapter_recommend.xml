@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    app:cardCornerRadius="2dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_recomm_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="你是谁啊"
+            android:textStyle="bold"/>
+
+
+        <ImageView
+            android:id="@+id/iv_recomm_icon"
+            android:layout_width="200dp"
+            android:layout_height="130dp"
+            android:layout_below="@id/tv_recomm_title"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/wc_ac_01"/>
+
+        <TextView
+            android:id="@+id/tv_recomm_playtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_recomm_icon"
+            android:layout_alignRight="@id/iv_recomm_icon"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="3dp"
+            android:background="@color/black_lucency"
+            android:padding="2dp"
+            android:text="16:22"
+            android:textColor="@color/title_white"/>
+
+        <TextView
+            android:id="@+id/tv_recomm_context"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_recomm_title"
+            android:layout_toRightOf="@id/iv_recomm_icon"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:text="你是谁啊"
+            />
+
+        <TextView
+            android:id="@+id/tv_recomm_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_recomm_icon"
+            android:layout_toRightOf="@id/iv_recomm_icon"
+            android:drawableLeft="@drawable/ic_watching"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:text="3.4万"
+            />
+
+        <TextView
+            android:id="@+id/tv_recomm_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_recomm_icon"
+            android:layout_marginLeft="25dp"
+            android:layout_toRightOf="@id/tv_recomm_number"
+            android:drawableLeft="@drawable/ic_answer_danmaku2"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:text="3.4万"
+            />
+
+        <ImageView
+            android:id="@+id/iv_recomm_icon_hand"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@id/iv_recomm_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/bili_default_avatar"/>
+
+        <TextView
+            android:id="@+id/tv_recomm_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_recomm_icon"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/iv_recomm_icon_hand"
+            android:drawablePadding="5dp"
+            android:text="大保健"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_recomm_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_recomm_name"
+            android:layout_toRightOf="@id/iv_recomm_icon_hand"
+            android:text="6天前"
+            android:textSize="10sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_recomm_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/iv_recomm_icon"
+            android:drawablePadding="5dp"
+            android:padding="10dp"
+            android:text="大保健"
+            android:textSize="10sp"
+            />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

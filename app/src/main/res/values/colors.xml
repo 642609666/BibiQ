@@ -12,5 +12,6 @@
     <color name="home_fragment_back">#EAEAEA</color>
     <color name="type_fragment_back">#DCDCDC</color>
     <color name="title_back">#FAFAFA</color>
+    <color name="black_lucency">#778B8987</color>
 
 </resources>

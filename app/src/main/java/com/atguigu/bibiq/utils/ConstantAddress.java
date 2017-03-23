@@ -21,11 +21,6 @@ public class ConstantAddress {
      */
     public static final String STREAMING = "http://live.bilibili.com/mobile/rooms?_device=android&appkey=1d8b6e7d45233436&area_id=0&build=501000&mobi_app" +
             "=android&page=1&platform=android&sort=hottest&ts=1490016354000&sign=8cc71690abffd8d3b2c18ef1b548630f";
-    /**
-     * 推荐页面地址
-     */
-    public static final String BBQ_RECOMMERD = "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network" +
-            "=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
 
     /**
      * 发现界面热搜数据
@@ -46,4 +41,10 @@ public class ConstantAddress {
      * 追番主页
      */
     public static final String BBQ_TOFAN = "http://bangumi.bilibili.com/api/app_index_page_v4?build=3940&device=phone&mobi_app=iphone&platform=ios";
+    /**
+     * 推荐页面
+     */
+    public static final String BBQ_RECOMMERD = "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&" +
+            "platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
+
 }
