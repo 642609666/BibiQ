@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swi"
@@ -7,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/home_fragment_back">
 
-    <com.atguigu.bibiq.view.MyListView
-        android:id="@+id/listview"
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </com.atguigu.bibiq.view.MyListView>
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.v4.widget.SwipeRefreshLayout>

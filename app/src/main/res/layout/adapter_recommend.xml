@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="10dp"
     app:cardCornerRadius="2dp">
 
     <RelativeLayout
@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
         android:orientation="vertical">
-
 
         <TextView
             android:id="@+id/tv_recomm_title"
@@ -38,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/iv_recomm_icon"
             android:layout_alignRight="@id/iv_recomm_icon"
-            android:layout_marginBottom="3dp"
-            android:layout_marginRight="3dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginRight="6dp"
             android:background="@color/black_lucency"
             android:padding="2dp"
             android:text="16:22"
@@ -64,8 +63,8 @@
             android:layout_alignBottom="@id/iv_recomm_icon"
             android:layout_toRightOf="@id/iv_recomm_icon"
             android:drawableLeft="@drawable/ic_watching"
+            android:layout_marginLeft="10dp"
             android:drawablePadding="5dp"
-            android:padding="10dp"
             android:text="3.4万"
             />
 
@@ -78,7 +77,6 @@
             android:layout_toRightOf="@id/tv_recomm_number"
             android:drawableLeft="@drawable/ic_answer_danmaku2"
             android:drawablePadding="5dp"
-            android:padding="10dp"
             android:text="3.4万"
             />
 

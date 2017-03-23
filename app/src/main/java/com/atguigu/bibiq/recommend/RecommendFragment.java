@@ -2,17 +2,15 @@ package com.atguigu.bibiq.recommend;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.recommend.bean.RecommendBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
-import com.atguigu.bibiq.view.MyListView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -30,10 +28,12 @@ import okhttp3.Call;
 
 public class RecommendFragment extends BaseFragment {
 
-    @InjectView(R.id.listview)
-    MyListView listview;
     @InjectView(R.id.swi)
     SwipeRefreshLayout swipeRefreshLayout;
+    @InjectView(R.id.recyclerview)
+    RecyclerView recyclerview;
+    @InjectView(R.id.swi)
+    SwipeRefreshLayout swi;
     private List<RecommendBean.DataBean> mData;
 
     private MyRecommendAdapter mAdapter;
@@ -54,13 +54,6 @@ public class RecommendFragment extends BaseFragment {
         refresh();
         Log.e("TAG", "推荐数据初始化");
         initJson(json);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), "position==" + position, Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     /**
@@ -108,9 +101,11 @@ public class RecommendFragment extends BaseFragment {
             swipeRefreshLayout.setRefreshing(false);
 
             mAdapter = new MyRecommendAdapter(getActivity(), mData);
-
-            listview.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
+
+            recyclerview.setAdapter(mAdapter);
+            recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
         }
     }
+
 }
