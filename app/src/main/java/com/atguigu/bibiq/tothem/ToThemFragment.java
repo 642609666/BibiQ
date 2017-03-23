@@ -1,5 +1,7 @@
 package com.atguigu.bibiq.tothem;
 
+import android.graphics.Color;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,9 +25,10 @@ public class ToThemFragment extends BaseFragment {
 
     @InjectView(R.id.recyclerview)
     RecyclerView recyclerview;
-   // @InjectView(R.id.swi)
-  //  SwipeRefreshLayout swipeRefreshLayout;
+    @InjectView(R.id.swi)
+    SwipeRefreshLayout swipeRefreshLayout;
     private MyToThemRecyclerView mAdapter;
+    private ToThemBean.ResultBean mResult;
 
     @Override
     public int getLayoutid() {
@@ -41,7 +44,7 @@ public class ToThemFragment extends BaseFragment {
     protected void initData(String json) {
         Log.e("TAG", "追番数据初始化");
         //下拉刷新
-        //  refresh();
+        refresh(json);
 
         //解析数据
         initJson(json);
@@ -49,12 +52,14 @@ public class ToThemFragment extends BaseFragment {
 
     private void initJson(String json) {
         ToThemBean toThemBean = JSON.parseObject(json, ToThemBean.class);
-        ToThemBean.ResultBean result = toThemBean.getResult();
+        mResult = toThemBean.getResult();
 
         //停止刷新
-      //  swipeRefreshLayout.setRefreshing(false);
-        if (result != null) {
-            mAdapter = new MyToThemRecyclerView(getActivity(), result);
+        swipeRefreshLayout.setRefreshing(false);
+        if (mResult != null) {
+            mAdapter = new MyToThemRecyclerView(getActivity(), mResult);
+            //刷新
+            mAdapter.notifyDataSetChanged();
             //设置适配器
             recyclerview.setAdapter(mAdapter);
             //设置布局管理
@@ -65,19 +70,19 @@ public class ToThemFragment extends BaseFragment {
     /**
      * 下拉刷新
      */
-    private void refresh() {
-      //  swipeRefreshLayout.setDistanceToTriggerSync(100);
-        //设置颜色
-      //  swipeRefreshLayout.setColorSchemeColors(Color.BLACK, Color.RED);
+    private void refresh(final String json) {
+        swipeRefreshLayout.setDistanceToTriggerSync(100);
+        // 设置颜色
+        swipeRefreshLayout.setColorSchemeColors(Color.BLACK, Color.RED);
         //设置背景颜色
-     //   swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.holo_orange_dark);
-        //下拉刷新
-     //   swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-//            @Override
-//            public void onRefresh() {
-//                initJson("");
-//            }
-//        });
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.holo_orange_dark);
+        // 下拉刷新
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initJson(json);
+            }
+        });
 
     }
 }
