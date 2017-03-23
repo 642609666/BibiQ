@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainViewPagerAdapter extends FragmentPagerAdapter {
     private final List<BaseFragment> datas;
-    private String[] titles = new String[]{"直播", "推荐","追番","分区","发现"};
+    private String[] titles = new String[]{"直播", "推荐","追番","分区","发现","动态"};
 
     public MainViewPagerAdapter(FragmentManager fm, List<BaseFragment> list) {
         super(fm);

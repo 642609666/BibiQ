@@ -24,9 +24,11 @@
         </activity>
         <activity android:name=".home.adapter.WebActivity">
         </activity>
-        <activity android:name=".activity.LoginActivity"
-                  android:windowSoftInputMode="stateVisible"
-                  >
+        <activity
+            android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="stateVisible">
+        </activity>
+        <activity android:name=".find.TopicActivity">
         </activity>
     </application>
 

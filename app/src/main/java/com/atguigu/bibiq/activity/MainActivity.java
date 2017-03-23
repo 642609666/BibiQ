@@ -20,6 +20,7 @@ import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.find.findFragment;
 import com.atguigu.bibiq.home.HomeFragment;
+import com.atguigu.bibiq.raw.raw;
 import com.atguigu.bibiq.recommend.RecommendFragment;
 import com.atguigu.bibiq.tothem.ToThemFragment;
 import com.atguigu.bibiq.type.TypeFragment;
@@ -127,6 +128,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new ToThemFragment());
         mList.add(new TypeFragment());
         mList.add(new findFragment());
+        mList.add(new raw());
     }
 
     @Override
@@ -144,6 +146,11 @@ public class MainActivity extends BaseActivity {
                     fab.setVisibility(View.VISIBLE);
                 } else {
                     fab.setVisibility(View.GONE);
+                }
+
+                if(position == mList.size()-1) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                    viewPager.setCurrentItem(position-1);
                 }
             }
 
