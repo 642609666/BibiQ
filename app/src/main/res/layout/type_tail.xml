@@ -27,7 +27,7 @@
         android:id="@+id/tv_type_tail_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_chevron_right"
+        android:drawableRight="@drawable/ic_category_more_refresh"
         android:gravity="center"
         android:text="条新动态,点击刷新!"
         android:textColor="@color/title_black"/>
