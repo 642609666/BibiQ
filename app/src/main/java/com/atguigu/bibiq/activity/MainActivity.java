@@ -48,8 +48,8 @@ public class MainActivity extends BaseActivity {
     TabLayout tablayout;
     @InjectView(R.id.view_pager)
     ViewPager viewPager;
-   /* @InjectView(R.id.nestedScrollView)
-    NestedScrollView nestedScrollView;*/
+    /* @InjectView(R.id.nestedScrollView)
+     NestedScrollView nestedScrollView;*/
     @InjectView(R.id.ll_more)
     LinearLayout llMore;
     @InjectView(R.id.drawlayout)
@@ -131,25 +131,33 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initListener() {
         // ViewPager切换时NestedScrollView滑动到顶部
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int position) {
-//                nestedScrollView.scrollTo(0, 0);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int state) {
-//
-//            }
-//        });
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //如果是直播就显示  不是就隐藏
+                if (position == 0) {
+                    fab.setVisibility(View.VISIBLE);
+                } else {
+                    fab.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         //设置rudion 按钮点击事件
         switchRb();
     }
 
+    /**
+     * 左侧布局
+     */
     private void switchRb() {
         rgLeft.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override

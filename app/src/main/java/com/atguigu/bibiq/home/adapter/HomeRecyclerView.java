@@ -57,6 +57,12 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
     private final int LIFE = 4;//生活娱乐
     private final int SING = 5;//唱见遇见
     private final int MOBILEGAMELIVE = 6;//手游直播
+    private final int MOBILEGAMELIVE1 = 7;//单击联机
+    private final int MOBILEGAMELIVE2 = 8;//网络游戏
+    private final int MOBILEGAMELIVE3 = 9;//电子竞技
+    private final int MOBILEGAMELIVE4 = 10;//御宅文化
+    private final int MOBILEGAMELIVE5 = 11;//放映厅
+    private final int BUTTON = 12;//最后的button按钮
     private LayoutInflater inflater;
     private List<HomeStreamingBean.DataBean> homeStreamingBeanData;
 
@@ -76,7 +82,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
      */
     @Override
     public int getItemCount() {
-        return 7;
+        return datas.getPartitions().size() + 3 + 1;
     }
 
     /**
@@ -101,6 +107,18 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             temp = SING;
         } else if (MOBILEGAMELIVE == position) {
             temp = MOBILEGAMELIVE;
+        } else if (MOBILEGAMELIVE1 == position) {
+            temp = MOBILEGAMELIVE1;
+        } else if (MOBILEGAMELIVE2 == position) {
+            temp = MOBILEGAMELIVE2;
+        } else if (MOBILEGAMELIVE3 == position) {
+            temp = MOBILEGAMELIVE3;
+        } else if (MOBILEGAMELIVE4 == position) {
+            temp = MOBILEGAMELIVE4;
+        } else if (MOBILEGAMELIVE5 == position) {
+            temp = MOBILEGAMELIVE5;
+        } else if (BUTTON == position) {
+            temp = BUTTON;
         }
         return temp;
     }
@@ -128,6 +146,18 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             return new MySingViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
         } else if (MOBILEGAMELIVE == viewType) {
             return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE1 == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE2 == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE3 == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE4 == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (MOBILEGAMELIVE5 == viewType) {
+            return new MyMobileGameLiveViewHolder(inflater.inflate(R.layout.adapter_streaming, null));
+        } else if (BUTTON == viewType) {
+            return new MyButtonViewHolder(inflater.inflate(R.layout.adapter_button, null));
         }
 
         return null;
@@ -170,7 +200,25 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             mySingViewHolder.setData(mContext, datas);
         } else if (MOBILEGAMELIVE == position) {
             MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
-            myMobileGameLiveViewHolder.setData(mContext, datas);
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(3));
+        } else if (MOBILEGAMELIVE1 == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(4));
+        } else if (MOBILEGAMELIVE2 == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(5));
+        } else if (MOBILEGAMELIVE3 == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(6));
+        } else if (MOBILEGAMELIVE4 == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(7));
+        } else if (MOBILEGAMELIVE5 == position) {
+            MyMobileGameLiveViewHolder myMobileGameLiveViewHolder = (MyMobileGameLiveViewHolder) holder;
+            myMobileGameLiveViewHolder.setData(mContext, datas.getPartitions().get(8));
+        } else if (BUTTON == position) {
+            MyButtonViewHolder myButtonViewHolder = (MyButtonViewHolder) holder;
+            myButtonViewHolder.setData(mContext);
         }
     }
 
@@ -356,7 +404,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         TextView tvHomeTitleRight;
         @InjectView(ll_home_title_btn)
         LinearLayout llHomeTitleBtn;
-//        @InjectView(R.id.gridview)
+        //        @InjectView(R.id.gridview)
         MyGridView gridview;
         @InjectView(R.id.btn_home_tail_more)
         Button btnHomeTailMore;
@@ -609,22 +657,22 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             ButterKnife.inject(this, view);
         }
 
-        public void setData(final Context context, HomeBean.DataBean datas) {
-            mAdapter = new HomeBeanAdapter(context, datas.getPartitions().get(3).getLives());
+        public void setData(final Context context, HomeBean.DataBean.PartitionsBean datas) {
+            mAdapter = new HomeBeanAdapter(context, datas.getLives());
 
             gridview.setAdapter(mAdapter);
 
             //设置标头
             Glide.with(context)
-                    .load(datas.getPartitions().get(3).getPartition().getSub_icon().getSrc())
+                    .load(datas.getPartition().getSub_icon().getSrc())
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .into(ivHomeTitleIcon);
             //设置名字
-            tvHomeTitleName.setText(datas.getPartitions().get(3).getPartition().getName());
+            tvHomeTitleName.setText(datas.getPartition().getName());
             //设置直播人数
-            tvHomeTitleNumber.setText(datas.getPartitions().get(3).getPartition().getCount() + "");
+            tvHomeTitleNumber.setText(datas.getPartition().getCount() + "");
             //假数据
-            tvHomeTailNumber.setText(datas.getPartitions().get(3).getPartition().getCount() * 3 + "");
+            tvHomeTailNumber.setText(datas.getPartition().getCount() * 3 + "");
 
             //设置点击事件
 
@@ -653,6 +701,26 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    /**
+     * 最后的button按钮
+     */
+    private class MyButtonViewHolder extends RecyclerView.ViewHolder {
+        Button btn_button;
+        public MyButtonViewHolder(View view) {
+            super(view);
+            btn_button = (Button) view.findViewById(R.id.btn_button);
+        }
+
+        public void setData(final Context context) {
+            btn_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "更多直播", Toast.LENGTH_SHORT).show();
                 }
             });
         }
