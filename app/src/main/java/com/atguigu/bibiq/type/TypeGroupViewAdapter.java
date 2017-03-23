@@ -8,8 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.type.bean.TypeHandBean;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -23,28 +25,21 @@ import butterknife.InjectView;
  */
 public class TypeGroupViewAdapter extends BaseAdapter {
     private final Context mContext;
-    private final String[] datas;
-    private List<Integer> dataDrawable;
+    private final List<TypeHandBean.DataBean> datas;
 
-    public TypeGroupViewAdapter(Context context, String[] list) {
+    public TypeGroupViewAdapter(Context context, List<TypeHandBean.DataBean> list) {
         this.mContext = context;
         this.datas = list;
-        dataDrawable = new ArrayList();
-        dataDrawable.add(R.drawable.live_home_follow_anchor);
-        dataDrawable.add(R.drawable.live_home_live_center);
-        dataDrawable.add(R.drawable.live_home_clip_video);
-        dataDrawable.add(R.drawable.live_home_search_room);
-        dataDrawable.add(R.drawable.live_home_all_category);
     }
 
     @Override
     public int getCount() {
-        return datas.length;
+        return datas.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datas[position];
+        return datas.get(position);
     }
 
     @Override
@@ -63,8 +58,11 @@ public class TypeGroupViewAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tvTypeName.setText(datas[position]);
-        viewHolder.ivTypeImage.setImageResource(dataDrawable.get(position % 5));
+        viewHolder.tvTypeName.setText(datas.get(position).getName());
+        Glide.with(mContext)
+                .load(datas.get(position).getLogo())
+                .diskCacheStrategy(DiskCacheStrategy.RESULT)
+                .into(viewHolder.ivTypeImage);
 
         return convertView;
     }

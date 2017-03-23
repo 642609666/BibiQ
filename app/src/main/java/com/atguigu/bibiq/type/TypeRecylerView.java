@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.home.adapter.WebActivity;
 import com.atguigu.bibiq.type.bean.TypeBean;
+import com.atguigu.bibiq.type.bean.TypeHandBean;
 import com.atguigu.bibiq.view.MyGridView;
 import com.bumptech.glide.Glide;
 import com.youth.banner.Banner;
@@ -37,15 +38,15 @@ import butterknife.InjectView;
  */
 public class TypeRecylerView extends RecyclerView.Adapter {
 
-    private String[] heads = {"直播", "番剧", "动画", "音乐", "舞蹈", "游戏", "科技", "生活", "鬼畜", "时尚",
-            "广告", "娱乐", "电影", "电视剧", "游戏中心"};
     private final List<TypeBean.DataBean> datas;
     private final Context mContext;
     private final LayoutInflater inflater;
     private final int HEAD = 0; //头部数据
     private final int ANIMATION = 1;//动画区
+    //private final int ANIMATION = 1;//国创区
 
     private int temp = HEAD;
+    private List<TypeHandBean.DataBean> mHandData;
 
     public TypeRecylerView(Context context, List<TypeBean.DataBean> data) {
         this.mContext = context;
@@ -82,11 +83,16 @@ public class TypeRecylerView extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (HEAD == position) {
             MyHeadViewHolder myHeadViewHolder = (MyHeadViewHolder) holder;
-            myHeadViewHolder.setData(mContext, heads);
+            myHeadViewHolder.setData(mContext, mHandData);
         } else if (ANIMATION == position) {
             MyAnimationViewHolder myAnimationViewHolder = (MyAnimationViewHolder) holder;
             myAnimationViewHolder.setData(mContext, datas.get(0));
         }
+    }
+
+    public void setHandData(List<TypeHandBean.DataBean> handData) {
+        mHandData = handData;
+
     }
 
     /**
@@ -102,8 +108,8 @@ public class TypeRecylerView extends RecyclerView.Adapter {
             ButterKnife.inject(this, itemView);
         }
 
-        public void setData(final Context context, final String[] heads) {
-            mAdapter = new TypeGroupViewAdapter(context, heads);
+        public void setData(final Context context, final List<TypeHandBean.DataBean> handData) {
+            mAdapter = new TypeGroupViewAdapter(context, handData);
 
             gridviewType.setAdapter(mAdapter);
 
@@ -111,7 +117,7 @@ public class TypeRecylerView extends RecyclerView.Adapter {
             gridviewType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(context, heads[position], Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, handData.get(position).getName(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

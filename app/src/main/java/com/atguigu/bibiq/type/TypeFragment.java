@@ -8,11 +8,15 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.type.bean.TypeBean;
+import com.atguigu.bibiq.type.bean.TypeHandBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
+import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.List;
 
 import butterknife.InjectView;
+import okhttp3.Call;
 
 /**
  * Created by ${
@@ -27,6 +31,10 @@ public class TypeFragment extends BaseFragment {
     RecyclerView recyclerviewType;
 
     private TypeRecylerView mTypeRecylerView;
+    /**
+     * 头部数据
+     */
+    private List<TypeBean.DataBean> mHandData;
 
     @Override
     public int getLayoutid() {
@@ -42,16 +50,43 @@ public class TypeFragment extends BaseFragment {
     protected void initData(String json) {
         Log.e("TAG", "分区数据初始化");
         TypeBean typeBean = JSON.parseObject(json, TypeBean.class);
+        mHandData = typeBean.getData();
+        initFromNet();
         //得到数据
-        List<TypeBean.DataBean> data = typeBean.getData();
-        if (data != null && data.size() > 0) {
-            //设置适配器
-            mTypeRecylerView = new TypeRecylerView(getActivity(),data);
-            //设置适配器
-            recyclerviewType.setAdapter(mTypeRecylerView);
-            //设置布局管理器
-            recyclerviewType.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        }
+
+    }
+
+    /**
+     * 解析分区除了头部的多种数据
+     */
+    private void initFromNet() {
+        OkHttpUtils.get()
+                .url(ConstantAddress.BBQ_TYPE_HAND)
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+                        Log.e("TAG", "分区请求失败" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        Log.e("TAG", "分区请求成功");
+                        if (mHandData != null && mHandData.size() > 0) {
+                            //设置适配器
+                            mTypeRecylerView = new TypeRecylerView(getActivity(), mHandData);
+                        }
+                        TypeHandBean typeHandBean = JSON.parseObject(response, TypeHandBean.class);
+                        //得到头部数据
+                        List<TypeHandBean.DataBean> data = typeHandBean.getData();
+                        //适配器得到头部数据
+                        mTypeRecylerView.setHandData(data);
+                        //设置适配器
+                        recyclerviewType.setAdapter(mTypeRecylerView);
+                        //设置布局管理器
+                        recyclerviewType.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                    }
+                });
 
     }
 

@@ -37,5 +37,10 @@ public class ConstantAddress {
      */
     public static final String BBQ_TYPE = "http://app.bilibili.com/x/v2/show/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&" +
             "platform=android&ts=1490014674000&sign=93edb7634f38498a60e5c3ad0b8b0974";
+    /**
+     * 分区头部数据
+     */
+    public static final String BBQ_TYPE_HAND = "http://app.bilibili.com/x/v2/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=" +
+            "android&platform=android&ts=1490170066000&sign=88793834edd7dd2977bd2de07b93a9b4";
 
 }

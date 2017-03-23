@@ -14,10 +14,6 @@
         android:fitsSystemWindows="true"
         tools:context="com.atguigu.bibiq.activity.MainActivity">
 
-
-
-
-
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,26 +45,12 @@
             </LinearLayout>
         </android.support.design.widget.AppBarLayout>
 
-<!--
-
-        <android.support.v4.widget.NestedScrollView
-            android:id="@+id/nestedScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
--->
-
             <android.support.v4.view.ViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 />
-
-        <!--</android.support.v4.widget.NestedScrollView>-->
-
 
         <!--悬浮按钮-->
         <android.support.design.widget.FloatingActionButton
