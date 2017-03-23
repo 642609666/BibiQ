@@ -45,20 +45,23 @@ public class TypeRecylerView extends RecyclerView.Adapter {
     private final int HEAD = 0; //头部数据
     private final int ANIMATION = 1;//动画区
     private final int AIMTRON = 2;//国创区
-    private final int AIMTRON1 = 3;//国创区
-    private final int AIMTRON2 = 4;//国创区
-    private final int AIMTRON3 = 5;//国创区
-    private final int AIMTRON4 = 6;//国创区
-    private final int AIMTRON5 = 7;//国创区
-    private final int AIMTRON6 = 8;//国创区
-    private final int AIMTRON7 = 9;//国创区
-    private final int AIMTRON8 = 10;//国创区
-    private final int AIMTRON9 = 11;//国创区
-    private final int AIMTRON10 = 12;//国创区
-    private final int AIMTRON11 = 13;//国创区
-    private final int AIMTRON12 = 14;//国创区
-    private final int AIMTRON13 = 15;//国创区
-    private final int AIMTRON14 = 16;//国创区
+    private final int AIMTRON1 = 3;//音乐区
+    private final int AIMTRON2 = 4;//舞蹈区
+    private final int AIMTRON3 = 5;//话题
+    private final int AIMTRON4 = 6;//游戏区
+    private final int AIMTRON5 = 7;//鬼畜区
+    private final int AIMTRON6 = 8;//话题
+    private final int AIMTRON7 = 9;//生活区
+    private final int AIMTRON8 = 10;//话题
+    private final int AIMTRON9 = 11;//科技区
+    private final int AIMTRON10 = 12;//活动中心
+    private final int AIMTRON11 = 13;//话题
+    private final int AIMTRON12 = 14;//时尚区
+    private final int AIMTRON13 = 15;//广告区
+    private final int AIMTRON14 = 16;//电视剧区
+    private final int AIMTRON15 = 17;//话题
+    private final int AIMTRON16 = 18;//电影区
+    private final int AIMTRON17 = 19;//电影区
 
 
     private int temp = HEAD;
@@ -72,7 +75,7 @@ public class TypeRecylerView extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 15;
+        return datas.size();
     }
 
     @Override
@@ -111,6 +114,12 @@ public class TypeRecylerView extends RecyclerView.Adapter {
             temp = AIMTRON13;
         }else if (AIMTRON14 == position) {
             temp = AIMTRON14;
+        }else if (AIMTRON15 == position) {
+            temp = AIMTRON15;
+        }else if (AIMTRON16 == position) {
+            temp = AIMTRON16;
+        }else if (AIMTRON17 == position) {
+            temp = AIMTRON17;
         }
         return temp;
     }
@@ -150,6 +159,12 @@ public class TypeRecylerView extends RecyclerView.Adapter {
         }else if (AIMTRON13 == viewType) {
             return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
         }else if (AIMTRON14 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON15 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON16 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON17 == viewType) {
             return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
         }
         return null;
@@ -208,6 +223,15 @@ public class TypeRecylerView extends RecyclerView.Adapter {
         }else if (AIMTRON14 == position) {
             MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
             myAimtronViewHolder.setData(mContext, datas.get(15));
+        }else if (AIMTRON15 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(16));
+        }else if (AIMTRON16 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(17));
+        }else if (AIMTRON17 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(18));
         }
     }
 

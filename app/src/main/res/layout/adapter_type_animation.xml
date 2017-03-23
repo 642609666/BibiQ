@@ -5,12 +5,10 @@
               android:layout_height="match_parent"
               android:layout_marginTop="10dp"
               android:orientation="vertical">
-
     <include
         layout="@layout/type_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <com.atguigu.bibiq.view.MyGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
@@ -20,10 +18,8 @@
         android:layout_marginTop="7dp"
         android:horizontalSpacing="10dp"
         android:numColumns="2"
-        android:verticalSpacing="10dip"></com.atguigu.bibiq.view.MyGridView>
-
+        android:verticalSpacing="10dip"/>
     <include
-
         layout="@layout/type_tail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
