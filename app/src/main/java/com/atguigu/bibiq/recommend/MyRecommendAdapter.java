@@ -27,7 +27,6 @@ public class MyRecommendAdapter extends RecyclerView.Adapter {
 
     private final int ONE = 0;
     private final LayoutInflater inflater;
-
     private int temp = ONE;
 
     public MyRecommendAdapter(Context context, List<RecommendBean.DataBean> data) {

@@ -36,7 +36,7 @@ public class MyCartoonAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return datas.size();
     }
 
     @Override

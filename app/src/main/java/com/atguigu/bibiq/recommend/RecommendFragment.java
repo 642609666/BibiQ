@@ -53,7 +53,7 @@ public class RecommendFragment extends BaseFragment {
         //下拉刷新
         refresh();
         Log.e("TAG", "推荐数据初始化");
-        initJson(json);
+        initFromNet();
     }
 
     /**
@@ -83,10 +83,12 @@ public class RecommendFragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "推荐加载数据成失败" + e.getMessage());
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        swipeRefreshLayout.setRefreshing(false);
                         Log.e("TAG", "推荐加载数据成功");
                         initJson(response);
                     }
@@ -97,6 +99,7 @@ public class RecommendFragment extends BaseFragment {
         RecommendBean recommendBean = JSON.parseObject(json, RecommendBean.class);
         mData = recommendBean.getData();
         Log.e("TAG", "推荐页面" + json);
+
         if (mData != null) {
             swipeRefreshLayout.setRefreshing(false);
 

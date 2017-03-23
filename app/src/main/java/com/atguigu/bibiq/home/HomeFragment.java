@@ -138,6 +138,8 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onFailure(String content) {
                 Log.e("TAG", "主页数据请求失败" + content);
+                //停止刷新
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
     }

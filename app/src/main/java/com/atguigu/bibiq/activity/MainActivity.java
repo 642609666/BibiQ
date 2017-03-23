@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.activity;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -164,6 +165,7 @@ public class MainActivity extends BaseActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_left_home://首页
+                        drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_big_member://我的大会员
                         Toast.makeText(MainActivity.this, "我的大会员", Toast.LENGTH_SHORT).show();
@@ -171,6 +173,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.rb_left_integral://会员积分
                         Toast.makeText(MainActivity.this, "会员积分", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_cache://离线缓存
@@ -179,10 +182,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.rb_left_look://稍后再看
                         Toast.makeText(MainActivity.this, "稍后再看", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_collect://我的收藏
                         Toast.makeText(MainActivity.this, "我的收藏", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_record://历史记录
@@ -191,10 +196,12 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.rb_left_attention://我的关注
                         Toast.makeText(MainActivity.this, "我的关注", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_wallet://B币钱包
                         Toast.makeText(MainActivity.this, "B币钱包", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
                         drawlayout.closeDrawers();
                         break;
                     case R.id.rb_left_theme://主题选择
@@ -234,6 +241,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.iv_left_icon: //侧滑头像
                 Toast.makeText(MainActivity.this, "头像", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 break;
             case R.id.title_game://游戏
                 Toast.makeText(MainActivity.this, "游戏", Toast.LENGTH_SHORT).show();

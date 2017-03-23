@@ -17,6 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/iv_tothem_bangumi"
                 android:layout_width="wrap_content"
@@ -33,11 +34,13 @@
                 android:layout_alignLeft="@id/iv_tothem_bangumi"
                 android:src="@drawable/bangumi_home_index_jp_ic"/>
         </RelativeLayout>
+
         <RelativeLayout
             android:id="@+id/rl_tothem_diffuse"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <ImageView
                 android:id="@+id/iv_tothem_diffuse"
                 android:layout_width="wrap_content"
@@ -45,6 +48,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/bangumi_home_index_cn_bg"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,18 +67,21 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:padding="5dp"
             android:id="@+id/ll_tothem_time"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
-            android:background="@color/title_white">
-
+            android:background="@color/title_white"
+            android:padding="5dp">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/bangumi_follow_ic_timeline"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_home_black_24dp"
                 android:drawablePadding="20dp"
                 android:gravity="center_vertical"
                 android:text="时间表"/>
@@ -82,24 +89,29 @@
 
 
         <LinearLayout
-            android:padding="5dp"
             android:id="@+id/ll_tithem_index"
             android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="1dp"
-            android:background="@color/title_white">
+            android:background="@color/title_white"
+            android:padding="5dp">
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_marginLeft="50dp"
+                android:layout_height="30dp"
+                android:src="@drawable/bangumi_follow_ic_index"/>
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="50dp"
+                android:layout_marginLeft="15dp"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_home_black_24dp"
                 android:drawablePadding="20dp"
                 android:gravity="center_vertical"
                 android:text="索引"/>
         </LinearLayout>
     </LinearLayout>
+
     <ImageView
         android:id="@+id/iv_tothem_register"
         android:layout_width="match_parent"
