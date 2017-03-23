@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.home.adapter.WebActivity;
 import com.atguigu.bibiq.tothem.bean.ToThemBean;
 import com.atguigu.bibiq.view.MyGridView;
@@ -152,7 +153,7 @@ public class MyToThemRecyclerView extends RecyclerView.Adapter {
             ivTothemRegister.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "登录", Toast.LENGTH_SHORT).show();
+                    context.startActivity(new Intent(context, LoginActivity.class));
                 }
             });
         }

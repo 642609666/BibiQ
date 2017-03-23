@@ -24,7 +24,9 @@
         </activity>
         <activity android:name=".home.adapter.WebActivity">
         </activity>
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity"
+                  android:windowSoftInputMode="stateVisible"
+                  >
         </activity>
     </application>
 

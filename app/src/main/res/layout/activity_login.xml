@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         android:gravity="center_vertical">
 
@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
+            android:background = "@null"
             android:focusable="true"
             android:hint="你的手机号/邮箱"/>
 
@@ -92,6 +93,8 @@
             android:id="@+id/et_login_paw"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background = "@null"
+            android:inputType="textPassword"
             android:layout_marginLeft="15dp"
             android:focusable="true"
             android:hint="请输入密码"/>
@@ -121,7 +124,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/btn_enroll_shape"
+            android:background="@drawable/btn_enroll_shape_s"
             android:text="注册账号"
             android:textColor="@color/back_main"/>
 
@@ -131,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:background="@color/btn_back_main"
+            android:background="@drawable/btn_register_shape_s"
             android:text="登录"
             android:textColor="@color/title_white"/>
     </LinearLayout>

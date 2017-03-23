@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.bean.HomeBean;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
 import com.atguigu.bibiq.view.MyGridView;
@@ -311,7 +312,23 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(context, "position ==" + position, Toast.LENGTH_SHORT).show();
+                   switch (position) {
+                       case  0:
+                           context.startActivity(new Intent(context, LoginActivity.class));
+                           break;
+                       case  1:
+                           context.startActivity(new Intent(context, LoginActivity.class));
+                           break;
+                       case  2:
+                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
+                           break;
+                       case  3:
+                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
+                           break;
+                       case  4:
+                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
+                           break;
+                   }
                 }
             });
         }

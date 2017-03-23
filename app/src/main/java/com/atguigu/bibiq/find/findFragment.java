@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.find;
 
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -193,6 +195,7 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_interest:
                 Toast.makeText(getActivity(), "兴趣圈", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
                 break;
             case R.id.tv_find_topics:
                 Toast.makeText(getActivity(), "话题中心", Toast.LENGTH_SHORT).show();

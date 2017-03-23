@@ -1,5 +1,9 @@
 package com.atguigu.bibiq.activity;
 
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +18,9 @@ import com.atguigu.bibiq.base.BaseActivity;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
+/**
+ * 登录界面
+ */
 public class LoginActivity extends BaseActivity {
 
     @InjectView(R.id.iv_login_back)
@@ -60,6 +67,80 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initListener() {
 
+        //账户信息焦点事件
+        etListener();
+
+
+    }
+
+    private void etListener() {
+        etLoginUser.setOnFocusChangeListener(new View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // 此处为得到焦点时的处理内容
+                    ivLoginLift.setImageResource(R.drawable.ic_22);
+                    ivLoginRight.setImageResource(R.drawable.ic_33);
+                    ivLoginUser.setImageResource(R.drawable.ic_login_username_default_meitu_3);
+                    ivLoginPaw.setImageResource(R.drawable.ic_login_password_default);
+                    llLoginUser.setBackgroundColor(Color.parseColor("#FB7299"));
+                    llLoginPaw.setBackgroundColor(Color.parseColor("#778B8987"));
+                } else {
+                    // 此处为失去焦点时的处理内容
+                    ivLoginLift.setImageResource(R.drawable.ic_22_hide);
+                    ivLoginRight.setImageResource(R.drawable.ic_33_hide);
+                    ivLoginUser.setImageResource(R.drawable.ic_login_username_default);
+                    ivLoginPaw.setImageResource(R.drawable.ic_login_password_default_meitu_3);
+                    llLoginUser.setBackgroundColor(Color.parseColor("#778B8987"));
+                    llLoginPaw.setBackgroundColor(Color.parseColor("#FB7299"));
+                }
+            }
+        });
+        //设置监听输入,改变登录按钮颜色和响应
+        etLoginUser.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isListener();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+        //设置监听输入
+        etLoginPaw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isListener();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    private void isListener() {
+        if (!TextUtils.isEmpty(etLoginUser.getText().toString()) && !TextUtils.isEmpty(etLoginPaw.getText().toString())) {
+            btnRegister.setBackgroundResource(R.drawable.btn_register_shape_s1);
+            //设置点击是否好使
+            btnRegister.setClickable(true);
+
+        } else {
+            btnRegister.setBackgroundResource(R.drawable.btn_register_shape_s);
+            btnRegister.setClickable(false);
+        }
     }
 
     @OnClick({R.id.iv_login_back, R.id.tv_login_forget_password, R.id.btn_enroll, R.id.btn_register})
