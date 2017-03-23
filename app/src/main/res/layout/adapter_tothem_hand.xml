@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/btn_black_cinereus"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_tothem_bangumi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/iv_tothem_bangumi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/bangumi_home_index_jp_bg"/>
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_tothem_bangumi"
+                android:layout_alignLeft="@id/iv_tothem_bangumi"
+                android:src="@drawable/bangumi_home_index_jp_ic"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rl_tothem_diffuse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/iv_tothem_diffuse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/bangumi_home_index_cn_bg"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/iv_tothem_diffuse"
+                android:layout_alignLeft="@id/iv_tothem_diffuse"
+                android:src="@drawable/bangumi_home_index_cn_ic"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_black_cinereus"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/ll_tothem_time"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:background="@color/title_white">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="时间表"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/ll_tithem_index"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:background="@color/title_white">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_home_black_24dp"
+                android:drawablePadding="20dp"
+                android:gravity="center_vertical"
+                android:text="索引"/>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/iv_tothem_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bangumi_home_login_guide"/>
+</LinearLayout>

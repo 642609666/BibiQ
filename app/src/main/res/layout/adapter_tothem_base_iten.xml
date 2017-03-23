@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="2dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_tothem_image"
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:scaleType="fitXY"
+            android:src="@drawable/wc_ac_16"/>
+
+
+        <TextView
+            android:id="@+id/tv_tothem_look"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_tothem_image"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="多少万人观看"
+            android:textColor="@color/title_white"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_tothem_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_tothem_image"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="多少万人观看"
+            android:textColor="@color/title_black"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_tothem_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_tothem_name"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="更新至"
+            android:textColor="@color/title_cinereus"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

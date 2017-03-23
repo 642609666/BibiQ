@@ -4,7 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
     <com.atguigu.bibiq.view.MyGridView
         android:id="@+id/gridview_type"
         android:background="@color/home_fragment_back"
