@@ -3,6 +3,7 @@ package com.atguigu.bibiq.type;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,22 @@ public class TypeRecylerView extends RecyclerView.Adapter {
     private final LayoutInflater inflater;
     private final int HEAD = 0; //头部数据
     private final int ANIMATION = 1;//动画区
-    //private final int ANIMATION = 1;//国创区
+    private final int AIMTRON = 2;//国创区
+    private final int AIMTRON1 = 3;//国创区
+    private final int AIMTRON2 = 4;//国创区
+    private final int AIMTRON3 = 5;//国创区
+    private final int AIMTRON4 = 6;//国创区
+    private final int AIMTRON5 = 7;//国创区
+    private final int AIMTRON6 = 8;//国创区
+    private final int AIMTRON7 = 9;//国创区
+    private final int AIMTRON8 = 10;//国创区
+    private final int AIMTRON9 = 11;//国创区
+    private final int AIMTRON10 = 12;//国创区
+    private final int AIMTRON11 = 13;//国创区
+    private final int AIMTRON12 = 14;//国创区
+    private final int AIMTRON13 = 15;//国创区
+    private final int AIMTRON14 = 16;//国创区
+
 
     private int temp = HEAD;
     private List<TypeHandBean.DataBean> mHandData;
@@ -56,7 +72,7 @@ public class TypeRecylerView extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 15;
     }
 
     @Override
@@ -65,6 +81,36 @@ public class TypeRecylerView extends RecyclerView.Adapter {
             temp = HEAD;
         } else if (ANIMATION == position) {
             temp = ANIMATION;
+        } else if (AIMTRON == position) {
+            temp = AIMTRON;
+        } else if (AIMTRON1 == position) {
+            temp = AIMTRON1;
+        } else if (AIMTRON2 == position) {
+            temp = AIMTRON2;
+        } else if (AIMTRON3 == position) {
+            temp = AIMTRON3;
+        } else if (AIMTRON4 == position) {
+            temp = AIMTRON4;
+        } else if (AIMTRON5 == position) {
+            temp = AIMTRON5;
+        } else if (AIMTRON6 == position) {
+            temp = AIMTRON6;
+        }else if (AIMTRON7 == position) {
+            temp = AIMTRON7;
+        }else if (AIMTRON8 == position) {
+            temp = AIMTRON8;
+        }else if (AIMTRON9 == position) {
+            temp = AIMTRON9;
+        }else if (AIMTRON10 == position) {
+            temp = AIMTRON10;
+        }else if (AIMTRON11 == position) {
+            temp = AIMTRON11;
+        }else if (AIMTRON12 == position) {
+            temp = AIMTRON12;
+        }else if (AIMTRON13 == position) {
+            temp = AIMTRON13;
+        }else if (AIMTRON14 == position) {
+            temp = AIMTRON14;
         }
         return temp;
     }
@@ -75,6 +121,36 @@ public class TypeRecylerView extends RecyclerView.Adapter {
             return new MyHeadViewHolder(inflater.inflate(R.layout.adapter_head_item, null));
         } else if (ANIMATION == viewType) {
             return new MyAnimationViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON1 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON2 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON3 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON4 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON5 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        } else if (AIMTRON6 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON7 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON8 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON9 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON10 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON11 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON12 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON13 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
+        }else if (AIMTRON14 == viewType) {
+            return new MyAimtronViewHolder(inflater.inflate(R.layout.adapter_type_animation, null));
         }
         return null;
     }
@@ -87,6 +163,51 @@ public class TypeRecylerView extends RecyclerView.Adapter {
         } else if (ANIMATION == position) {
             MyAnimationViewHolder myAnimationViewHolder = (MyAnimationViewHolder) holder;
             myAnimationViewHolder.setData(mContext, datas.get(0));
+        } else if (AIMTRON == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(1));
+        } else if (AIMTRON1 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(2));
+        } else if (AIMTRON2 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(3));
+        } else if (AIMTRON3 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(4));
+        } else if (AIMTRON4 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(5));
+        } else if (AIMTRON5 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(6));
+        } else if (AIMTRON6 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(7));
+        }else if (AIMTRON7 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(8));
+        }else if (AIMTRON8 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(9));
+        }else if (AIMTRON9 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(10));
+        }else if (AIMTRON10 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(11));
+        }else if (AIMTRON11 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(12));
+        }else if (AIMTRON12 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(13));
+        }else if (AIMTRON13 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(14));
+        }else if (AIMTRON14 == position) {
+            MyAimtronViewHolder myAimtronViewHolder = (MyAimtronViewHolder) holder;
+            myAimtronViewHolder.setData(mContext, datas.get(15));
         }
     }
 
@@ -145,6 +266,8 @@ public class TypeRecylerView extends RecyclerView.Adapter {
         TextView tvTypeTailRight;
         @InjectView(R.id.banner)
         Banner banner;
+        @InjectView(R.id.ll_type_tail)
+        LinearLayout llTypeTail;
 
         private MyAnimationAdapter mAdapter;
 
@@ -192,41 +315,186 @@ public class TypeRecylerView extends RecyclerView.Adapter {
                     Toast.makeText(context, "position==" + position, Toast.LENGTH_SHORT).show();
                 }
             });
-            //设置广告轮播条
-            banner.setVisibility(View.VISIBLE);
-            //2.设置Banner的数据
-            List<String> images = new ArrayList<>();
-            //获得广告条数据
-            final List<TypeBean.DataBean.BannerBean.BottomBean> bottom = dataBean.getBanner().getBottom();
-            for (int i = 0; i < bottom.size(); i++) {
-                images.add(bottom.get(i).getImage());
-            }
-            //简单使用
-            banner.setImages(images)
-                    .setImageLoader(new ImageLoader() {
-                        @Override
-                        public void displayImage(Context context, Object path, ImageView imageView) {
-                            //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
-                            Glide.with(context)
-                                    .load(path)
-                                    .crossFade()
-                                    .into(imageView);
-                        }
-                    })
-                    .start();
-            //设置样式
-            banner.setBannerAnimation(BackgroundToForegroundTransformer.class);
-            //3.设置Banner的点击事件
-            banner.setOnBannerListener(new OnBannerListener() {
-                @Override
-                public void OnBannerClick(int position) {
-                    //进入联网数据页面
-                    Intent intent = new Intent(context, WebActivity.class);
-                    intent.putExtra("web_json", bottom.get(position).getUri() + ",," + bottom.get(position).getTitle());
-                    context.startActivity(intent);
-                }
-            });
+
+            //设置广告条
+            initBanner(banner, context, dataBean);
         }
     }
 
+    /**
+     * 国创区
+     */
+    static class MyAimtronViewHolder extends RecyclerView.ViewHolder {
+        @InjectView(R.id.iv_type_title_icon)
+        ImageView ivTypeTitleIcon;
+        @InjectView(R.id.tv_type_title_name)
+        TextView tvTypeTitleName;
+        @InjectView(R.id.btn_type_title_look)
+        Button btnTypeTitleLook;
+        @InjectView(R.id.ll_type_title_btn)
+        LinearLayout llTypeTitleBtn;
+        @InjectView(R.id.gridview)
+        MyGridView gridview;
+        @InjectView(R.id.btn_type_tail_more)
+        Button btnTypeTailMore;
+        @InjectView(R.id.tv_type_tail_number)
+        TextView tvTypeTailNumber;
+        @InjectView(R.id.tv_type_tail_right)
+        TextView tvTypeTailRight;
+        @InjectView(R.id.banner)
+        Banner banner;
+        @InjectView(R.id.ll_type_tail)
+        LinearLayout llTypeTail;
+        private MyAnimationAdapter mAdapter;
+
+        public MyAimtronViewHolder(View view) {
+            super(view);
+            ButterKnife.inject(this, view);
+        }
+
+        public void setData(final Context context, TypeBean.DataBean dataBean) {
+
+            //只要一条数据  那么久显示一条banner
+            if (dataBean.getBody().size() == 1) {
+                Log.e("TAG", "只要一条广告条");
+                //设置头部图片(假数据)
+                ivTypeTitleIcon.setImageResource(R.drawable.ic_btn_biliyoo);
+                //设置名字
+                tvTypeTitleName.setText("话题");
+                //设置广告
+                initBannerOne(banner, context, dataBean.getBody().get(0));
+
+                llTypeTail.setVisibility(View.GONE);
+
+            } else {
+
+                if (dataBean.getBody().size() % 2 == 1) {
+                    gridview.setNumColumns(3);
+                }
+                //设置头部图片(假数据)
+                ivTypeTitleIcon.setImageResource(R.drawable.ic_btn_game);
+                //设置名字
+                tvTypeTitleName.setText(dataBean.getTitle());
+                //设置适配器
+                mAdapter = new MyAnimationAdapter(context, dataBean);
+                gridview.setAdapter(mAdapter);
+                btnTypeTailMore.setTag("更多动画");
+                //设置动态数量
+                tvTypeTailNumber.setText("44");
+
+                btnTypeTailMore.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "更多国创", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                tvTypeTailRight.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "刷新", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(context, "position==" + position, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+            llTypeTitleBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "进去看看", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            if (dataBean.getBanner() != null) {
+                initBanner(banner, context, dataBean);
+            }
+        }
+    }
+
+    /**
+     * 正常广告条
+     *
+     * @param context
+     * @param dataBean
+     */
+    public static void initBanner(final Banner banner, final Context context, TypeBean.DataBean dataBean) {
+        //设置广告轮播条
+        banner.setVisibility(View.VISIBLE);
+        //2.设置Banner的数据
+        List<String> images = new ArrayList<>();
+        //获得广告条数据
+        final List<TypeBean.DataBean.BannerBean.BottomBean> bottom = dataBean.getBanner().getBottom();
+        for (int i = 0; i < bottom.size(); i++) {
+            images.add(bottom.get(i).getImage());
+        }
+        //简单使用
+        banner.setImages(images)
+                .setImageLoader(new ImageLoader() {
+                    @Override
+                    public void displayImage(Context context, Object path, ImageView imageView) {
+                        //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
+                        Glide.with(context)
+                                .load(path)
+                                .crossFade()
+                                .into(imageView);
+                    }
+                })
+                .start();
+        //设置样式
+        banner.setBannerAnimation(BackgroundToForegroundTransformer.class);
+        //3.设置Banner的点击事件
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                //进入联网数据页面
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("web_json", bottom.get(position).getUri() + ",," + bottom.get(position).getTitle());
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    /**
+     * 话题广告条
+     *
+     * @param context
+     * @param dataBean
+     */
+    public static void initBannerOne(final Banner banner, final Context context, final TypeBean.DataBean.BodyBean dataBean) {
+        //设置广告轮播条
+        banner.setVisibility(View.VISIBLE);
+        //2.设置Banner的数据
+        List<String> images = new ArrayList<>();
+        //获得广告条数据
+
+        images.add(dataBean.getCover());
+        //简单使用
+        banner.setImages(images)
+                .setImageLoader(new ImageLoader() {
+                    @Override
+                    public void displayImage(Context context, Object path, ImageView imageView) {
+                        //具体方法内容自己去选择，次方法是为了减少banner过多的依赖第三方包，所以将这个权限开放给使用者去选择
+                        Glide.with(context)
+                                .load(path)
+                                .crossFade()
+                                .into(imageView);
+                    }
+                })
+                .start();
+        //设置样式
+        banner.setBannerAnimation(BackgroundToForegroundTransformer.class);
+        //3.设置Banner的点击事件
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                //进入联网数据页面
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("web_json", dataBean.getUri() + ",," + dataBean.getTitle() + "此处没有文字");
+                context.startActivity(intent);
+            }
+        });
+    }
 }

@@ -14,7 +14,7 @@
     <com.atguigu.bibiq.view.MyGridView
         android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="7dp"
@@ -23,6 +23,7 @@
         android:verticalSpacing="10dip"></com.atguigu.bibiq.view.MyGridView>
 
     <include
+
         layout="@layout/type_tail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -32,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:visibility="gone"
         app:image_scale_type="fit_xy"
