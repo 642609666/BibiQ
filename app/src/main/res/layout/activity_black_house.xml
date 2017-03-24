@@ -2,19 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_web"
+    android:id="@+id/activity_black_house"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/btn_black_cinereus"
     android:orientation="vertical"
-    tools:context="com.atguigu.bibiq.home.adapter.WebActivity">
+    tools:context="com.atguigu.bibiq.find.activity.BlackHouseActivity">
 
     <include layout="@layout/title_hand"/>
 
-
-    <WebView
-        android:id="@+id/webview"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </WebView>
+    </android.support.v7.widget.RecyclerView>
+
+
 </LinearLayout>

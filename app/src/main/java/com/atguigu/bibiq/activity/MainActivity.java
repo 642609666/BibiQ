@@ -101,7 +101,6 @@ public class MainActivity extends BaseActivity {
         initFragment();
         //加载适配器
         initAdapter();
-
     }
 
     /**

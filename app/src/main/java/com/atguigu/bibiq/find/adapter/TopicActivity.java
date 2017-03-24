@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.adapter;
 
 import android.util.Log;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseActivity;
+import com.atguigu.bibiq.find.bean.Topicbean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
@@ -20,7 +21,11 @@ import java.util.List;
 import butterknife.InjectView;
 import okhttp3.Call;
 
-public class CentreActivity extends BaseActivity {
+/**
+ * 话题中心
+ */
+public class TopicActivity extends BaseActivity {
+
 
     @InjectView(R.id.gridview)
     GridView gridview;
@@ -31,12 +36,10 @@ public class CentreActivity extends BaseActivity {
     @InjectView(R.id.tv_login_forget_password)
     TextView tvLoginForgetPassword;
 
-    private ActivityCentreAdapter mAdapter;
+    private TopicAdapter mAdapter;
     private boolean flag;
 
     private int number = 0;
-    private CentreBean topicbean;
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_topic;
@@ -53,7 +56,7 @@ public class CentreActivity extends BaseActivity {
 
     private void initFromNet() {
         OkHttpUtils.get()
-                .url(ConstantAddress.BBQ_ACTIVITY_CENTRE)
+                .url(ConstantAddress.BBQ_TOPIC)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -64,11 +67,11 @@ public class CentreActivity extends BaseActivity {
                     @Override
                     public void onResponse(String response, int id) {
                         Log.e("TAG", "话题中心请求成功");
-                         topicbean = JSON.parseObject(response, CentreBean.class);
-                        List<CentreBean.ListBean> list = topicbean.getList();
+                        Topicbean topicbean = JSON.parseObject(response, Topicbean.class);
+                        List<Topicbean.ListBean> list = topicbean.getList();
                         if (list != null && list.size() > 0) {
                             //设置适配器
-                            mAdapter = new ActivityCentreAdapter(CentreActivity.this, list);
+                            mAdapter = new TopicAdapter(TopicActivity.this, list);
 
                             gridview.setAdapter(mAdapter);
                         }
@@ -92,9 +95,9 @@ public class CentreActivity extends BaseActivity {
                     case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
                         // 判断滚动到底部
                         if (gridview.getLastVisiblePosition() == (gridview.getCount() - 1)) {
-                            Toast.makeText(CentreActivity.this, "加载", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TopicActivity.this, "加载", Toast.LENGTH_SHORT).show();
 
-                            if (mAdapter != null) {
+                            if(mAdapter != null) {
                                 number += 5;
                                 mAdapter.setNumber(number);
 
@@ -121,4 +124,5 @@ public class CentreActivity extends BaseActivity {
         });
 
     }
+
 }

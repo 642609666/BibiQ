@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_house_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_feedback_top"/>
+
+    <TextView
+        android:id="@+id/tv_house_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+        android:text="弹幕阳光计划第一单"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tv_house_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:paddingRight="5dp"
+        android:text="2017-03-16"
+        android:textSize="15sp"/>
+</LinearLayout>

@@ -16,6 +16,10 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.base.BaseFragment;
+import com.atguigu.bibiq.find.activity.BlackHouseActivity;
+import com.atguigu.bibiq.find.activity.CentreActivity;
+import com.atguigu.bibiq.find.adapter.TopicActivity;
+import com.atguigu.bibiq.find.bean.FindBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -207,6 +211,7 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_blackhouse:
                 Toast.makeText(getActivity(), "小黑屋", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),BlackHouseActivity.class));
                 break;
             case R.id.tv_find_original:
                 Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();

@@ -378,7 +378,7 @@ public class TypeRecylerView extends RecyclerView.Adapter {
 
         public void setData(final Context context, TypeBean.DataBean dataBean) {
 
-            //只要一条数据  那么久显示一条banner
+            //只要一条数据  那么就显示一条banner
             if (dataBean.getBody().size() == 1) {
                 Log.e("TAG", "只要一条广告条");
                 //设置头部图片(假数据)

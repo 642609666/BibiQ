@@ -109,10 +109,17 @@ public class HomeFragment extends BaseFragment {
 
                     //设置数据
                     if (mData.getBanner().size() > 0 && mData != null) {
-                        mRecyclerView = new HomeRecyclerView(getActivity(), mData);
+                        if (mRecyclerView == null) {
+                            mRecyclerView = new HomeRecyclerView(getActivity(), mData);
+                            //设置适配器
+                            recyclerview.setAdapter(mRecyclerView);
+                            //设置布局管理器
+                            recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+                        }
                     }
                     //处理解析的直播json数据
                     HomeStreamingBean homeStreamingBean = JSON.parseObject(content, HomeStreamingBean.class);
+
                     //得到直播数据
                     if (homeStreamingBean != null) {
                         mHomeStreamingBeanData = homeStreamingBean.getData();
@@ -124,10 +131,7 @@ public class HomeFragment extends BaseFragment {
                     }
                     //刷新适配器
                     mRecyclerView.notifyDataSetChanged();
-                    //设置适配器
-                    recyclerview.setAdapter(mRecyclerView);
-                    //设置布局管理器
-                    recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e("TAG", "加载网络错误" + e.getMessage());

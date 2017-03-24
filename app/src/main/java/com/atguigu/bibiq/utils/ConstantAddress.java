@@ -55,5 +55,13 @@ public class ConstantAddress {
      * 活动中心数据
      */
     public static final String BBQ_ACTIVITY_CENTRE = "http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015812000&sign=0d9d37f01da5a7d425c10cee0cf3a5f4";
+    /**
+     * 小黑屋官方公告
+     */
+    public static final String BBQ_BLACKHOUSE_NOTICE = "http://www.bilibili.com/blackroom/web/publish?pageNo=1&pageSize=4";
+    /**
+     * 小黑屋动态
+     */
+    public static final String BBQ_BLACKHOUSE_DYNAMIC = "http://www.bilibili.com/blackroom/web/blocked_info?originType=0&pageNo=1&pageSize=100";
 
 }

@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.bean;
 
 import java.util.List;
 

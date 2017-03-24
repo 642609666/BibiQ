@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_white"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/iv_house_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/bili_default_avatar"/>
+
+        <Button
+            android:id="@+id/btn_house_register"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/back_main"
+            android:text="登录"
+            android:textColor="@color/title_white"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_house_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="后查看违规统计"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/btn_black_cinereus"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@color/title_white"
+            android:gravity="center_horizontal"
+
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tv_black_number_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="我的节操"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@color/title_white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tv_black_number_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="30sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="封禁次数"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/title_white"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="官方公告"/>
+
+        <TextView
+            android:id="@+id/tv_house_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多"
+            android:textColor="@color/back_main"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+    <com.atguigu.bibiq.view.MyGridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/title_white"
+        android:divider="@color/title_cinereus"
+        android:dividerHeight="1dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="1"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@color/home_fragment_back"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="公示动态"
+            android:textColor="@color/title_black"/>
+
+        <TextView
+            android:id="@+id/tv_house_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/ic_file_download_black_24dp"
+            android:text="全是违规"/>
+    </LinearLayout>
+
+    <com.atguigu.bibiq.view.MyGridView
+        android:id="@+id/gridview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="7dp"
+        android:background="@color/title_white"
+        android:divider="@color/title_cinereus"
+        android:dividerHeight="1dp"
+        android:horizontalSpacing="10dp"
+        android:numColumns="1"
+        android:verticalSpacing="5dp"/>
+</LinearLayout>

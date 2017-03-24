@@ -73,6 +73,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
 
         this.mContext = context;
         this.datas = banner;
+
         inflater = LayoutInflater.from(context);
     }
 

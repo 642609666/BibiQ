@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.find.bean.Topicbean;
 import com.atguigu.bibiq.home.adapter.WebActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -36,7 +37,7 @@ public class TopicAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return (5 + mNumber) > datas.size()?datas.size():(5 + mNumber);
+        return (mNumber + 5) > datas.size() ? datas.size() : (mNumber + 5);
     }
 
     @Override
@@ -72,7 +73,7 @@ public class TopicAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //联网页面
                 Intent intent = new Intent(mContext, WebActivity.class);
-                intent.putExtra("web_json",datas.get(position).getLink() + ",," + datas.get(position).getTitle());
+                intent.putExtra("web_json", datas.get(position).getLink() + ",," + datas.get(position).getTitle());
                 mContext.startActivity(intent);
             }
         });

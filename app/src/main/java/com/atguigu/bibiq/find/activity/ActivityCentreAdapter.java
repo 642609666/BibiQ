@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.find.bean.CentreBean;
 import com.atguigu.bibiq.home.adapter.WebActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;

@@ -32,6 +32,7 @@ public class WebActivity extends AppCompatActivity {
     WebView webview;
 
     private ProgressBar mProgressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +42,7 @@ public class WebActivity extends AppCompatActivity {
         String[] split = web_json.split(",,");
         mProgressBar = new ProgressBar(this);
         final AlertDialog dialog = new AlertDialog.Builder(this)
+                .setMessage("加载中......")
                 .setView(mProgressBar)
                 .show();
         WebSettings webSettings = webview.getSettings();

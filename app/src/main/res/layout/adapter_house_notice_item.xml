@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="3dp"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="2dp"
+    >
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_house_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/bili_default_avatar"/>
+
+            <TextView
+                android:id="@+id/tv_house_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="啊哈哈95995"/>
+
+            <ImageView
+                android:id="@+id/iv_house_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_emoji"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_house_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="在平讯中恶意打你"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_house_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="在平讯中恶意打你"
+                android:textColor="@color/back_main"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_house_context"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="fdsfsdfsdfsdfsdgdfgdfgdfgfghfghfghfghtrtrytry"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_look"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="@drawable/ic_home_black_24dp"
+            android:gravity="center_vertical"
+            android:text="9条评论"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
