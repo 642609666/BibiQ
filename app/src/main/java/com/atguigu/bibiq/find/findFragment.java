@@ -203,6 +203,7 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_activity:
                 Toast.makeText(getActivity(), "活动中心", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),CentreActivity.class));
                 break;
             case R.id.tv_find_blackhouse:
                 Toast.makeText(getActivity(), "小黑屋", Toast.LENGTH_SHORT).show();

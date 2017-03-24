@@ -30,6 +30,8 @@
         </activity>
         <activity android:name=".find.TopicActivity">
         </activity>
+        <activity android:name=".find.CentreActivity">
+        </activity>
     </application>
 
 </manifest>

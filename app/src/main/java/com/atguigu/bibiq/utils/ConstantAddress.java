@@ -50,6 +50,10 @@ public class ConstantAddress {
     /**
      * 话题中心数据
      */
-    public static final String BBQ_TOPIC = "http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app" +
-            "=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";
+    public static final String BBQ_TOPIC = "http://api.bilibili.com/topic/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015740000&sign=be68382cdc99c168ef87f2fa423dd280";
+    /**
+     * 活动中心数据
+     */
+    public static final String BBQ_ACTIVITY_CENTRE = "http://api.bilibili.com/event/getlist?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&page=1&pageSize=20&platform=android&ts=1490015812000&sign=0d9d37f01da5a7d425c10cee0cf3a5f4";
+
 }
