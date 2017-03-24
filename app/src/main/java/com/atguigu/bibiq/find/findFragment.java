@@ -215,6 +215,7 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_original:
                 Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),OriginalActivity.class));
                 break;
             case R.id.tv_find_aregion:
                 Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();

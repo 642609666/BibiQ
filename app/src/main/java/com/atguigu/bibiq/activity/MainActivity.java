@@ -91,6 +91,12 @@ public class MainActivity extends BaseActivity {
     private MainViewPagerAdapter adapter;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.activity_main;
     }
