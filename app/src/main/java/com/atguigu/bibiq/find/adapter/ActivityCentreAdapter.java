@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find.activity;
+package com.atguigu.bibiq.find.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +23,7 @@ import butterknife.InjectView;
  * Created by ${
  * 李岩
  * QQ/微信: 642609666} on 3/24 0024.
- * 功能:
+ * 功能:小黑屋动态评论适配器
  */
 public class ActivityCentreAdapter extends BaseAdapter {
     private final Context mContext;

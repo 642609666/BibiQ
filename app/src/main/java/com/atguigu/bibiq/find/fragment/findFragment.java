@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.fragment;
 
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -16,9 +16,11 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.base.BaseFragment;
+import com.atguigu.bibiq.find.activity.AllOriginalActivity;
 import com.atguigu.bibiq.find.activity.BlackHouseActivity;
 import com.atguigu.bibiq.find.activity.CentreActivity;
-import com.atguigu.bibiq.find.adapter.TopicActivity;
+import com.atguigu.bibiq.find.activity.OriginalActivity;
+import com.atguigu.bibiq.find.activity.TopicActivity;
 import com.atguigu.bibiq.find.bean.FindBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -219,6 +221,7 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_aregion:
                 Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(),AllOriginalActivity.class));
                 break;
             case R.id.tv_find_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();

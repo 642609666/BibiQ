@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.atguigu.bibiq.view.Loadingpager;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import butterknife.ButterKnife;
 
@@ -78,5 +79,6 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         ButterKnife.reset(this);
+        OkHttpUtils.delete().tag(this);
     }
 }

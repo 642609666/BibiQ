@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.atguigu.bibiq.app.AppManager;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import butterknife.ButterKnife;
 
@@ -54,6 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         //butterknife解绑
         ButterKnife.reset(this);
+        OkHttpUtils.delete().tag(this);
         AppManager.getInstance().remove(this);
     }
 }

@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find.adapter;
+package com.atguigu.bibiq.find.activity;
 
 import android.util.Log;
 import android.view.View;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseActivity;
+import com.atguigu.bibiq.find.adapter.TopicAdapter;
 import com.atguigu.bibiq.find.bean.Topicbean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -40,6 +41,7 @@ public class TopicActivity extends BaseActivity {
     private boolean flag;
 
     private int number = 0;
+
     @Override
     public int getLayoutId() {
         return R.layout.activity_topic;
@@ -56,6 +58,7 @@ public class TopicActivity extends BaseActivity {
 
     private void initFromNet() {
         OkHttpUtils.get()
+                .tag(this)
                 .url(ConstantAddress.BBQ_TOPIC)
                 .build()
                 .execute(new StringCallback() {
@@ -97,7 +100,7 @@ public class TopicActivity extends BaseActivity {
                         if (gridview.getLastVisiblePosition() == (gridview.getCount() - 1)) {
                             Toast.makeText(TopicActivity.this, "加载", Toast.LENGTH_SHORT).show();
 
-                            if(mAdapter != null) {
+                            if (mAdapter != null) {
                                 number += 5;
                                 mAdapter.setNumber(number);
 
@@ -125,4 +128,9 @@ public class TopicActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkHttpUtils.delete().tag(this);
+    }
 }

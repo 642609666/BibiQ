@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/black_lucency"
     android:orientation="vertical"
-    tools:context="com.atguigu.bibiq.find.adapter.TopicActivity">
+    tools:context="com.atguigu.bibiq.find.activity.TopicActivity">
 
     <include layout="@layout/login_title"/>
 

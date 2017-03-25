@@ -18,7 +18,7 @@ import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.adapter.MainViewPagerAdapter;
 import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
-import com.atguigu.bibiq.find.findFragment;
+import com.atguigu.bibiq.find.fragment.findFragment;
 import com.atguigu.bibiq.home.HomeFragment;
 import com.atguigu.bibiq.raw.raw;
 import com.atguigu.bibiq.recommend.RecommendFragment;

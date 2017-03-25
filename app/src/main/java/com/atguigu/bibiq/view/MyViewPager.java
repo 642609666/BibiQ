@@ -12,12 +12,12 @@ import android.view.View;
  * 功能:重写viewpager  防止事件冲突
  */
 
-public class WrapContentHeightViewPager extends ViewPager {
-    public WrapContentHeightViewPager(Context context) {
+public class MyViewPager extends ViewPager {
+    public MyViewPager(Context context) {
         super(context);
     }
 
-    public WrapContentHeightViewPager(Context context, AttributeSet attrs) {
+    public MyViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

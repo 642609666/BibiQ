@@ -28,13 +28,13 @@
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="stateVisible">
         </activity>
-        <activity android:name=".find.adapter.TopicActivity">
+        <activity android:name=".find.activity.TopicActivity">
         </activity>
         <activity android:name=".find.activity.CentreActivity">
         </activity>
         <activity android:name=".find.activity.BlackHouseActivity">
         </activity>
-        <activity android:name=".find.OriginalActivity">
+        <activity android:name=".find.activity.OriginalActivity">
         </activity>
     </application>
 

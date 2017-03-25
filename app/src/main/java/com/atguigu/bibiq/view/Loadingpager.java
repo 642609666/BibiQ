@@ -143,6 +143,7 @@ public abstract class Loadingpager extends FrameLayout {
             return;
         }
         OkHttpUtils.get()
+                .tag(this)
                 .url(url)
                 .build()
                 .execute(new StringCallback() {
@@ -214,4 +215,5 @@ public abstract class Loadingpager extends FrameLayout {
     protected abstract String getUrl();
 
     public abstract int getViewId();
+
 }

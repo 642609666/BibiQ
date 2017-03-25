@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseActivity;
+import com.atguigu.bibiq.find.adapter.ActivityCentreAdapter;
 import com.atguigu.bibiq.find.bean.CentreBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -21,6 +22,9 @@ import java.util.List;
 import butterknife.InjectView;
 import okhttp3.Call;
 
+/**
+ * 活动中心界面
+ */
 public class CentreActivity extends BaseActivity {
 
     @InjectView(R.id.gridview)
@@ -48,12 +52,13 @@ public class CentreActivity extends BaseActivity {
         //网络请求数据
         initFromNet();
 
-        tvLoginRegister.setText("话题中心");
+        tvLoginRegister.setText("活动中心");
         tvLoginForgetPassword.setVisibility(View.GONE);
     }
 
     private void initFromNet() {
         OkHttpUtils.get()
+                .tag(this)
                 .url(ConstantAddress.BBQ_ACTIVITY_CENTRE)
                 .build()
                 .execute(new StringCallback() {
@@ -121,5 +126,11 @@ public class CentreActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkHttpUtils.delete().tag(this);
     }
 }
