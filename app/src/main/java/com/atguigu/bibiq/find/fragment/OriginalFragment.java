@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
-import com.atguigu.bibiq.find.OriginalAdapter;
+import com.atguigu.bibiq.find.adapter.OriginalAdapter;
 import com.atguigu.bibiq.find.bean.OriginalBean;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.atguigu.bibiq.view.MyGridView;

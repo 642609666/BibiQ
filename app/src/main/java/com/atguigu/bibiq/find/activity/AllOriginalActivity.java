@@ -11,10 +11,12 @@ import android.widget.Toast;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
-import com.atguigu.bibiq.find.adapter.OriginalViewpagerAdapter;
-import com.atguigu.bibiq.find.fragment.OriginalAllFragment;
+import com.atguigu.bibiq.find.adapter.AllOriginalViewpagerAdapter;
+import com.atguigu.bibiq.find.fragment.AllFragmentCartoon;
+import com.atguigu.bibiq.find.fragment.AllFragmentDance;
+import com.atguigu.bibiq.find.fragment.AllFragmentGame;
+import com.atguigu.bibiq.find.fragment.AllFragmentMusic;
 import com.atguigu.bibiq.find.fragment.OriginalBangumiFragment;
-import com.atguigu.bibiq.find.fragment.OriginalFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +25,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- *全区视频排行榜
+ * 全区视频排行榜
  */
 public class AllOriginalActivity extends BaseActivity {
 
@@ -45,7 +47,7 @@ public class AllOriginalActivity extends BaseActivity {
     ViewPager viewPager;
 
     private List<BaseFragment> mList;
-    private OriginalViewpagerAdapter mAdapter;
+    private AllOriginalViewpagerAdapter mAdapter;
 
     @Override
     public int getLayoutId() {
@@ -57,7 +59,7 @@ public class AllOriginalActivity extends BaseActivity {
         //初始化碎片
         initFragment();
 
-        mAdapter = new OriginalViewpagerAdapter(getSupportFragmentManager(), mList);
+        mAdapter = new AllOriginalViewpagerAdapter(getSupportFragmentManager(), mList);
 
         viewPager.setAdapter(mAdapter);
 
@@ -72,9 +74,31 @@ public class AllOriginalActivity extends BaseActivity {
 
     private void initFragment() {
         mList = new ArrayList<>();
-        mList.add(new OriginalFragment());
-        mList.add(new OriginalAllFragment());
-        mList.add(new OriginalBangumiFragment());
+        mList.add(new OriginalBangumiFragment());//番剧
+        mList.add(new AllFragmentCartoon());//动画
+        mList.add(new AllFragmentMusic());//音乐
+        mList.add(new AllFragmentDance());//舞蹈
+        mList.add(new AllFragmentGame());//游戏
+
+
+        //下面没有数据
+        mList.add(new OriginalBangumiFragment());//番剧
+        mList.add(new AllFragmentCartoon());//动画
+        mList.add(new AllFragmentMusic());//音乐
+        mList.add(new AllFragmentDance());//舞蹈
+        mList.add(new AllFragmentGame());//游戏
+        mList.add(new OriginalBangumiFragment());//番剧
+        mList.add(new AllFragmentCartoon());//动画
+        mList.add(new AllFragmentMusic());//音乐
+//        mList.add(new AllFragmentCountry());//国创
+//        mList.add(new AllFragmentScience());//科技
+//        mList.add(new AllFragmentLive());//生活
+//        mList.add(new AllFragmentConvulsion());//鬼畜
+//        mList.add(new AllFragmentFashion());//时尚
+//        mList.add(new AllFragmentRecreation());//娱乐
+//        mList.add(new AllFragmentMovie());//电影
+//        mList.add(new AllFragmentTeleplay());//电视剧
+
     }
 
     @Override

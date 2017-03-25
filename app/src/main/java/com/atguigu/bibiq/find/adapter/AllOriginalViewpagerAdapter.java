@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AllOriginalViewpagerAdapter extends FragmentPagerAdapter {
     private final List<BaseFragment> datas;
-    String[] names = {"原创", "全站", "番剧"};
+    String[] names = {"番剧", "动画",  "音乐", "舞蹈", "游戏", "国创","科技", "生活", "鬼畜", "时尚", "娱乐", "电影", "电视剧"};
 
     public AllOriginalViewpagerAdapter(FragmentManager fm, List<BaseFragment> list) {
         super(fm);

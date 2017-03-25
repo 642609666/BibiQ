@@ -36,6 +36,8 @@
         </activity>
         <activity android:name=".find.activity.OriginalActivity">
         </activity>
+        <activity android:name=".find.activity.AllOriginalActivity">
+        </activity>
     </application>
 
 </manifest>

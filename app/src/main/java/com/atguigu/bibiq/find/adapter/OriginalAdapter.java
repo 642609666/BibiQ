@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.find;
+package com.atguigu.bibiq.find.adapter;
 
 import android.content.Context;
 import android.graphics.Color;

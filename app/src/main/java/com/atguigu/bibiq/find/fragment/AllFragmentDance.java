@@ -25,9 +25,9 @@ import okhttp3.Call;
  * Created by ${
  * 李岩
  * QQ/微信: 642609666} on 3/25 0025.
- * 功能:番剧排行榜fragment
+ * 功能:舞蹈排行榜fragment
  */
-public class OriginalBangumiFragment extends BaseFragment {
+public class AllFragmentDance extends BaseFragment {
     @InjectView(R.id.gridview)
     MyGridView gridview;
     private OriginalAdapter mAdapter;
@@ -41,7 +41,7 @@ public class OriginalBangumiFragment extends BaseFragment {
 
     @Override
     public String getChildUrl() {
-        return ConstantAddress.BBQ_ORIGINAL_DRAMA;
+        return ConstantAddress.BBQ_ALL_DANCE;
     }
 
     @Override
@@ -75,7 +75,7 @@ public class OriginalBangumiFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 //重新联网请求下载
-                initFromNet(ConstantAddress.BBQ_ORIGINAL_DRAMA);
+                initFromNet(ConstantAddress.BBQ_ALL_DANCE);
 
             }
         });
