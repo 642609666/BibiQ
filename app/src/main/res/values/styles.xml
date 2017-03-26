@@ -58,4 +58,8 @@
         <item name="android:padding">10dp</item>
         <item name="android:textColor">@color/title_black</item>
     </style>
+
+    <style name="ToolBar.TitleText" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>
