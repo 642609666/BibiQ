@@ -16,7 +16,7 @@ import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
 import com.atguigu.bibiq.find.bean.BlackHouseDynamicBean;
 import com.atguigu.bibiq.find.bean.BlackHouseNoticeBean;
-import com.atguigu.bibiq.home.adapter.WebActivity;
+import com.atguigu.bibiq.activity.WebActivity;
 import com.atguigu.bibiq.view.MyGridView;
 
 import java.util.List;

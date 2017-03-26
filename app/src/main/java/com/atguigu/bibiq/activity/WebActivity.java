@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.home.adapter;
+package com.atguigu.bibiq.activity;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -90,6 +91,11 @@ public class WebActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.iv_web_more:
+                PopupWindow popupWindow = new PopupWindow(ivWebMore,50,50);
+
+//                popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("FF0000")));
+
+                //（6）二者都有默认的背景，都可以通过setBackgroundDrawable(new ColorDrawable(android.R.color.transparent));去掉。
                 Toast.makeText(WebActivity.this, "分享", Toast.LENGTH_SHORT).show();
                 break;
         }

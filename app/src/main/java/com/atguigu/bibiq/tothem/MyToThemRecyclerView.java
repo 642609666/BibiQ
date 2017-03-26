@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
-import com.atguigu.bibiq.home.adapter.WebActivity;
+import com.atguigu.bibiq.activity.WebActivity;
 import com.atguigu.bibiq.tothem.bean.ToThemBean;
 import com.atguigu.bibiq.view.MyGridView;
 import com.bumptech.glide.Glide;

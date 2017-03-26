@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
-import com.atguigu.bibiq.home.adapter.WebActivity;
+import com.atguigu.bibiq.activity.WebActivity;
 import com.atguigu.bibiq.type.bean.TypeBean;
 import com.atguigu.bibiq.type.bean.TypeHandBean;
 import com.atguigu.bibiq.view.MyGridView;

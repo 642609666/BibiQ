@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
+import com.atguigu.bibiq.activity.WebActivity;
 import com.atguigu.bibiq.bean.HomeBean;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
 import com.atguigu.bibiq.view.MyGridView;
@@ -240,7 +241,6 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             //设置数据
             List<String> imageViews = new ArrayList<>();
             for (int i = 0; i < data.size(); i++) {
-                imageViews.add(data.get(i).getImg());
                 imageViews.add(data.get(i).getImg());
             }
 

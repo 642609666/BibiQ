@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.atguigu.bibiq.home.adapter.WebActivity">
+    tools:context="com.atguigu.bibiq.activity.WebActivity">
 
     <include layout="@layout/title_hand"/>
 

@@ -2,8 +2,11 @@ package com.atguigu.bibiq.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.atguigu.bibiq.app.AppManager;
+import com.atguigu.bibiq.utils_search.IOnSearchClickListener;
+import com.atguigu.bibiq.utils_search.SearchFragment;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import butterknife.ButterKnife;
@@ -57,5 +60,31 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.reset(this);
         OkHttpUtils.delete().tag(this);
         AppManager.getInstance().remove(this);
+    }
+
+    /**
+     * 显示搜索框
+     */
+    public void isShowSearch() {
+
+        //实例化
+        SearchFragment searchFragment = SearchFragment.newInstance();
+        //搜索框内容回调
+        searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
+            @Override
+            public void OnSearchClick(String keyword) {
+                //这里处理逻辑
+                Toast.makeText(BaseActivity.this, keyword, Toast.LENGTH_SHORT).show();
+            }
+
+            //二维码回调
+            @Override
+            public void OnScanClick() {
+                //这里处理逻辑
+                Toast.makeText(BaseActivity.this, "我是二维码点击事件", Toast.LENGTH_SHORT).show();
+            }
+        });
+        //显示
+        searchFragment.show(getSupportFragmentManager(), SearchFragment.TAG);
     }
 }

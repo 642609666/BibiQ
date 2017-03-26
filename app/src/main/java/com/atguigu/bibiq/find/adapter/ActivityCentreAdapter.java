@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.find.bean.CentreBean;
-import com.atguigu.bibiq.home.adapter.WebActivity;
+import com.atguigu.bibiq.activity.WebActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 

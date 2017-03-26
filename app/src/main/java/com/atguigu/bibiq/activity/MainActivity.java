@@ -153,9 +153,9 @@ public class MainActivity extends BaseActivity {
                     fab.setVisibility(View.GONE);
                 }
 
-                if(position == mList.size()-1) {
+                if (position == mList.size() - 1) {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    viewPager.setCurrentItem(position-1);
+                    viewPager.setCurrentItem(position - 1);
                 }
             }
 
@@ -262,7 +262,8 @@ public class MainActivity extends BaseActivity {
                 Toast.makeText(MainActivity.this, "下载", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.title_search://搜索
-                Toast.makeText(MainActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+                //实例化
+                isShowSearch();
                 break;
             case R.id.fab://悬浮按钮
                 Toast.makeText(MainActivity.this, "悬浮按钮", Toast.LENGTH_SHORT).show();
