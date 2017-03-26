@@ -18,8 +18,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
+import com.atguigu.bibiq.utils.ClipboardUtil;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -44,7 +46,7 @@ public class WebActivity extends AppCompatActivity {
         setContentView(R.layout.activity_web);
         ButterKnife.inject(this);
         String web_json = getIntent().getStringExtra("web_json");
-         split = web_json.split(",,");
+        split = web_json.split(",,");
         WebSettings webSettings = webview.getSettings();
         //设置支持js
         webSettings.setJavaScriptEnabled(true);
@@ -91,6 +93,7 @@ public class WebActivity extends AppCompatActivity {
 
     /**
      * 记载menu
+     *
      * @param menu
      * @return
      */
@@ -100,6 +103,7 @@ public class WebActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_browser, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -119,20 +123,22 @@ public class WebActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_copy:
-               // ClipboardUtil.setText(WebActivity.this, split[0]);
-              //  Toast.makeText(WebActivity.this, "已复制", Toast.LENGTH_SHORT).show();
+                ClipboardUtil.setText(WebActivity.this, split[0]);
+                Toast.makeText(WebActivity.this, "已复制", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
     //分享
     private void share() {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
         intent.putExtra(Intent.EXTRA_TEXT, "来自「哔哩哔哩」的分享:" + split[0]); //传输网页
-        startActivity(Intent.createChooser(intent, split[1]));   //传出名字
+        startActivity(Intent.createChooser(intent, ""));   //传出名字
     }
+
     @Override
     public void onBackPressed() {
 
@@ -144,6 +150,7 @@ public class WebActivity extends AppCompatActivity {
             finish();
         }
     }
+
     @Override
     protected void onDestroy() {
         webview.destroy();

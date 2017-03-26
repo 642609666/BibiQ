@@ -92,7 +92,8 @@ public class OriginalActivity extends BaseActivity {
                 Toast.makeText(OriginalActivity.this, "下载", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.title_search:
-                Toast.makeText(OriginalActivity.this, "搜索", Toast.LENGTH_SHORT).show();
+                isShowSearch();
+               // Toast.makeText(OriginalActivity.this, "搜索", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.activity.LoginActivity;
+import com.atguigu.bibiq.activity.MainActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.find.activity.AllOriginalActivity;
 import com.atguigu.bibiq.find.activity.BlackHouseActivity;
@@ -22,6 +23,7 @@ import com.atguigu.bibiq.find.activity.CentreActivity;
 import com.atguigu.bibiq.find.activity.OriginalActivity;
 import com.atguigu.bibiq.find.activity.TopicActivity;
 import com.atguigu.bibiq.find.bean.FindBean;
+import com.atguigu.bibiq.search.SearchActivity;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -161,7 +163,11 @@ public class findFragment extends BaseFragment {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "" + textView.getText().toString(), Toast.LENGTH_SHORT).show();
+                //这里处理逻辑
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                intent.putExtra("url", ConstantAddress.SEARCH_HAND + textView.getText().toString() + ConstantAddress.SEARCH_TAIL);
+                intent.putExtra("name", textView.getText().toString());
+                startActivity(intent);
             }
         });
         return textView;
@@ -178,7 +184,8 @@ public class findFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_find_search:
-                Toast.makeText(getActivity(), "搜索", Toast.LENGTH_SHORT).show();
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.isShowSearch();
                 break;
             case R.id.iv_find_saoyisao:
                 Toast.makeText(getActivity(), "扫一扫", Toast.LENGTH_SHORT).show();
@@ -209,19 +216,19 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.tv_find_activity:
                 Toast.makeText(getActivity(), "活动中心", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(),CentreActivity.class));
+                startActivity(new Intent(getActivity(), CentreActivity.class));
                 break;
             case R.id.tv_find_blackhouse:
                 Toast.makeText(getActivity(), "小黑屋", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(),BlackHouseActivity.class));
+                startActivity(new Intent(getActivity(), BlackHouseActivity.class));
                 break;
             case R.id.tv_find_original:
                 Toast.makeText(getActivity(), "原创排行榜", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(),OriginalActivity.class));
+                startActivity(new Intent(getActivity(), OriginalActivity.class));
                 break;
             case R.id.tv_find_aregion:
                 Toast.makeText(getActivity(), "全区排行榜", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(),AllOriginalActivity.class));
+                startActivity(new Intent(getActivity(), AllOriginalActivity.class));
                 break;
             case R.id.tv_find_game:
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();

@@ -98,7 +98,7 @@ public class RecommendFragment extends BaseFragment {
     private void initJson(String json) {
         RecommendBean recommendBean = JSON.parseObject(json, RecommendBean.class);
         mData = recommendBean.getData();
-        Log.e("TAG", "推荐页面" + json);
+        Log.e("TAG", "推荐页面");
 
         if (mData != null) {
             swipeRefreshLayout.setRefreshing(false);

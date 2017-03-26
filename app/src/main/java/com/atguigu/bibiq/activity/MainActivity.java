@@ -118,7 +118,7 @@ public class MainActivity extends BaseActivity {
         viewPager.setAdapter(adapter);
 
         //添加复用,避免重复初始化
-        viewPager.setOffscreenPageLimit(5);
+        // viewPager.setOffscreenPageLimit(5);
         //关联ViewPager
         tablayout.setupWithViewPager(viewPager);
 

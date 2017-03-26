@@ -1,10 +1,14 @@
 package com.atguigu.bibiq.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.atguigu.bibiq.app.AppManager;
+import com.atguigu.bibiq.search.SearchActivity;
+import com.atguigu.bibiq.utils.ConstantAddress;
 import com.atguigu.bibiq.utils_search.IOnSearchClickListener;
 import com.atguigu.bibiq.utils_search.SearchFragment;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -74,12 +78,16 @@ public abstract class BaseActivity extends AppCompatActivity {
             @Override
             public void OnSearchClick(String keyword) {
                 //这里处理逻辑
-                Toast.makeText(BaseActivity.this, keyword, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(BaseActivity.this, SearchActivity.class);
+                intent.putExtra("url", ConstantAddress.SEARCH_HAND + keyword + ConstantAddress.SEARCH_TAIL);
+                intent.putExtra("name", keyword);
+                startActivity(intent);
             }
 
             //二维码回调
             @Override
             public void OnScanClick() {
+                Log.e("TAG", "二维码");
                 //这里处理逻辑
                 Toast.makeText(BaseActivity.this, "我是二维码点击事件", Toast.LENGTH_SHORT).show();
             }

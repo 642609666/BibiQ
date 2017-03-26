@@ -91,4 +91,14 @@ public class ConstantAddress {
      * 游戏排行榜
      */
     public static final String BBQ_ALL_GAME = "http://app.bilibili.com/x/v2/rank/region?appkey=1d8b6e7d45233436&build=501000&mobi_app=android&platform=android&pn=1&ps=20&rid=4&ts=1490017429000&sign=1c56af2a2383cf4e29f29d26a9909a13";
+
+    /**
+     * 搜索头
+     */
+    public static final String SEARCH_HAND = "http://app.bilibili.com/x/v2/search?appkey=1d8b6e7d45233436&build=501000&duration=0&keyword=";
+    /**
+     * 搜索尾
+     */
+    public static final String SEARCH_TAIL = "&mobi_app=android&platform=android&pn=1&ps=120";
+
 }
