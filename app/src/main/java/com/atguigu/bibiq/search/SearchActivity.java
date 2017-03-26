@@ -4,6 +4,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +24,7 @@ import com.atguigu.bibiq.search.fragment.BangumiFragment;
 import com.atguigu.bibiq.search.fragment.SynthesisFragment;
 import com.atguigu.bibiq.search.fragment.TelevisionFragment;
 import com.atguigu.bibiq.search.fragment.UPFragment;
+import com.atguigu.bibiq.view.MyGridView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -61,15 +67,26 @@ public class SearchActivity extends BaseActivity {
     LinearLayout llTitleSearchRight;
     @InjectView(R.id.view_pager)
     ViewPager viewPager;
+    @InjectView(R.id.gridview)
+    MyGridView gridview;
+    @InjectView(R.id.btn_more)
+    Button btnMore;
+    @InjectView(R.id.ll_root)
+    LinearLayout llRoot;
     private String url;
     private String name;
 
     private MySearchTabLayoutAdapter mAdapter;
-
+    private MyBaseAdapter mBaseAdapter;
     private List<BaseFragment> mList;
-    private Boolean isOpenLeft = false;
-    private Boolean isOpenCentre = false;
-    private Boolean isOpenRight = false;
+    private Boolean isOpenLeft = true;
+    private Boolean isOpenCentre = true;
+    private Boolean isOpenRight = true;
+
+    private String[] lift = {"默认排序", "播放多", "新发布", "弹幕多"};
+    private String[] centre = {"全部时长", "0-10分钟", "10-30分钟", "30-60分钟", "60分钟+"};
+    private String[] right = {"全部分区", "番剧", "动画", "国创", "音乐", "舞蹈",
+            "游戏", "科技", "生活", "鬼畜", "时尚", "娱乐", "电影", "电视剧"};
 
     @Override
     public int getLayoutId() {
@@ -78,6 +95,10 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
+        mBaseAdapter = new MyBaseAdapter(this);
+
+        gridview.setAdapter(mBaseAdapter);
         //得到搜索到的数据
         url = getIntent().getStringExtra("url");
         name = getIntent().getStringExtra("name");
@@ -89,41 +110,6 @@ public class SearchActivity extends BaseActivity {
         initFromNet(url);
         //
 
-        initViewpager();
-    }
-
-    private void initViewpager() {
-        if (viewPager != null) {
-            viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
-                @Override
-                public void onPageSelected(int position) {
-                    switch (position) {
-                        case 0:
-                            Log.e("TAG", "1111");
-                            break;
-                        case 1:
-                            Log.e("TAG", "2222");
-                            break;
-                        case 2:
-                            Log.e("TAG", "3333");
-                            break;
-                        case 3:
-                            Log.e("TAG", "4444");
-                            break;
-                    }
-                }
-
-                @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
-            });
-        }
     }
 
     private void initFromNet(String url) {
@@ -161,7 +147,7 @@ public class SearchActivity extends BaseActivity {
                 if (nav.get(i).getTotal() <= 99) {
                     list.add(nav.get(i).getName() + "(" + nav.get(i).getTotal() + ")");
                 } else {
-                    list.add(nav.get(i).getName() + "(" + 99 + ")");
+                    list.add(nav.get(i).getName() + "(" + 99 + "+)");
                 }
             } else {
                 list.add(nav.get(i).getName());
@@ -189,37 +175,83 @@ public class SearchActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.iv_web_back, R.id.title_scan, R.id.ll_title_search_left, R.id.ll_title_search_centre, R.id.ll_title_search_right})
+    @OnClick({R.id.btn_more, R.id.iv_web_back, R.id.title_scan, R.id.ll_title_search_left, R.id.ll_title_search_centre, R.id.ll_title_search_right})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_web_back:
                 finish();
+                break;
+            case R.id.btn_more:
+                isOpenCentre = true;
+                isOpenLeft = true;
+                isOpenRight = true;
+                ivTitleSearchLeft.setImageResource(R.drawable.ic_bangumi_index_close);
+                ivTitleSearchCentre.setImageResource(R.drawable.ic_bangumi_index_close);
+                ivTitleSearchRight.setImageResource(R.drawable.ic_bangumi_index_close);
+
+                isDwonAnimation();
                 break;
             case R.id.title_scan:
                 Log.e("TAG", "二维码");
                 Toast.makeText(SearchActivity.this, "二维码", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.ll_title_search_left:
-                if (!isOpenLeft) {
+                if (isOpenLeft == true) {
+                    isUpAnimation();
                     ivTitleSearchLeft.setImageResource(R.drawable.ic_bangumi_index_open);
-                } else {
+                    if (mBaseAdapter != null) {
+                        llRoot.setVisibility(View.VISIBLE);
+                        mBaseAdapter.setData(lift);
+                        mBaseAdapter.notifyDataSetChanged();
+                    }
 
+                    isOpenCentre = true;
+                    isOpenRight = true;
+                    ivTitleSearchCentre.setImageResource(R.drawable.ic_bangumi_index_close);
+                    ivTitleSearchRight.setImageResource(R.drawable.ic_bangumi_index_close);
+                } else {
+                    llRoot.setVisibility(View.GONE);
                     ivTitleSearchLeft.setImageResource(R.drawable.ic_bangumi_index_close);
                 }
                 isOpenLeft = !isOpenLeft;
                 break;
             case R.id.ll_title_search_centre:
-                if (!isOpenCentre) {
+                if (isOpenCentre == true) {
+                    isUpAnimation();
                     ivTitleSearchCentre.setImageResource(R.drawable.ic_bangumi_index_open);
+                    if (mBaseAdapter != null) {
+                        llRoot.setVisibility(View.VISIBLE);
+                        mBaseAdapter.setData(centre);
+                        mBaseAdapter.notifyDataSetChanged();
+
+                        isOpenLeft = true;
+                        isOpenRight = true;
+                        ivTitleSearchLeft.setImageResource(R.drawable.ic_bangumi_index_close);
+                        ivTitleSearchRight.setImageResource(R.drawable.ic_bangumi_index_close);
+                    }
                 } else {
+                    llRoot.setVisibility(View.GONE);
                     ivTitleSearchCentre.setImageResource(R.drawable.ic_bangumi_index_close);
                 }
                 isOpenCentre = !isOpenCentre;
                 break;
             case R.id.ll_title_search_right:
-                if (!isOpenRight) {
+                if (isOpenRight == true) {
+                    isUpAnimation();
                     ivTitleSearchRight.setImageResource(R.drawable.ic_bangumi_index_open);
+                    if (mBaseAdapter != null) {
+                        llRoot.setVisibility(View.VISIBLE);
+                        mBaseAdapter.setData(right);
+                        mBaseAdapter.notifyDataSetChanged();
+
+
+                        isOpenCentre = true;
+                        isOpenLeft = true;
+                        ivTitleSearchCentre.setImageResource(R.drawable.ic_bangumi_index_close);
+                        ivTitleSearchLeft.setImageResource(R.drawable.ic_bangumi_index_close);
+                    }
                 } else {
+                    llRoot.setVisibility(View.GONE);
                     ivTitleSearchRight.setImageResource(R.drawable.ic_bangumi_index_close);
                 }
                 isOpenRight = !isOpenRight;
@@ -227,9 +259,48 @@ public class SearchActivity extends BaseActivity {
         }
     }
 
+    private void isDwonAnimation() {
+        int height = gridview.getHeight();
+        TranslateAnimation ta = new TranslateAnimation(0.0f, 0.0f, 0.0f, -height);
+        AlphaAnimation aa = new AlphaAnimation(1,0);
+        ta.setDuration(500);
+        aa.setDuration(500);
+        AnimationSet set = new AnimationSet(false);
+        set.addAnimation(ta);
+        set.addAnimation(aa);
+        llRoot.startAnimation(set);
+        set.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                llRoot.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+    }
+    private void isUpAnimation() {
+        int height = gridview.getMinimumHeight();
+        TranslateAnimation ta = new TranslateAnimation(0.0f, 0.0f, 0.0f, height);
+        AlphaAnimation aa = new AlphaAnimation(0,1);
+        ta.setDuration(500);
+        aa.setDuration(500);
+        AnimationSet set = new AnimationSet(false);
+        set.addAnimation(ta);
+        set.addAnimation(aa);
+        llRoot.startAnimation(set);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();
         OkHttpUtils.delete().tag(this);
     }
+
 }

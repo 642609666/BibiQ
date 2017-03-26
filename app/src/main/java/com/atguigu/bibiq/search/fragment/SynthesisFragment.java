@@ -4,7 +4,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
@@ -85,10 +84,7 @@ public class SynthesisFragment extends BaseFragment {
                         number += 5;
                         if (mAdapter != null) {
                             mAdapter.setNumber(number);
-
                             mAdapter.notifyDataSetChanged();
-
-                            Toast.makeText(getActivity(), "加载", Toast.LENGTH_SHORT).show();
                         }
                     }
 

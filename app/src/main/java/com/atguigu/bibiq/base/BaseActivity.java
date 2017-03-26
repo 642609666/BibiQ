@@ -77,11 +77,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         searchFragment.setOnSearchClickListener(new IOnSearchClickListener() {
             @Override
             public void OnSearchClick(String keyword) {
+
                 //这里处理逻辑
                 Intent intent = new Intent(BaseActivity.this, SearchActivity.class);
                 intent.putExtra("url", ConstantAddress.SEARCH_HAND + keyword + ConstantAddress.SEARCH_TAIL);
                 intent.putExtra("name", keyword);
                 startActivity(intent);
+
             }
 
             //二维码回调

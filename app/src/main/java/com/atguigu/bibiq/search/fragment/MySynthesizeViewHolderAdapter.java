@@ -25,19 +25,24 @@ import butterknife.InjectView;
  */
 public class MySynthesizeViewHolderAdapter extends BaseAdapter {
 
-    private final List<SearchBean.DataBean.ItemsBean.ArchiveBean> datas;
+    private List<SearchBean.DataBean.ItemsBean.ArchiveBean> datas;
     private final Context mContext;
     private int mNumber = 0;
 
     public MySynthesizeViewHolderAdapter(Context context, SearchBean datas) {
         this.mContext = context;
-        this.datas = datas.getData().getItems().getArchive();
+        if (datas != null) {
+            this.datas = datas.getData().getItems().getArchive();
+        }
     }
 
     @Override
     public int getCount() {
         int i = 5 + mNumber;
-        return i > datas.size() ? datas.size() : i;
+        if (datas != null) {
+            return i > datas.size() ? datas.size() : i;
+        }
+        return 0;
     }
 
     @Override

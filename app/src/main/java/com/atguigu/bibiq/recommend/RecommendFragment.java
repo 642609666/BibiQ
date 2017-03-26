@@ -61,10 +61,10 @@ public class RecommendFragment extends BaseFragment {
      */
     private void refresh() {
         swipeRefreshLayout.setDistanceToTriggerSync(100);
-        // 设置颜色
-        swipeRefreshLayout.setColorSchemeColors(Color.BLACK, Color.RED);
+        //设置颜色
+        swipeRefreshLayout.setColorSchemeColors(Color.parseColor("#FB7299"));
         //设置背景颜色
-        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.holo_orange_dark);
+        swipeRefreshLayout.setProgressBackgroundColorSchemeResource(android.R.color.white);
         // 下拉刷新
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
