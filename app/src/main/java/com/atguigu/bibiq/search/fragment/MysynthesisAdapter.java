@@ -25,7 +25,7 @@ import butterknife.InjectView;
 public class MysynthesisAdapter extends RecyclerView.Adapter {
 
     private final Context mContext;
-    private final SearchBean datas;
+    private SearchBean datas;
     private final int OVER = 0;
     private final LayoutInflater inflater;
     private int temp = OVER;
@@ -63,13 +63,17 @@ public class MysynthesisAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (OVER == position) {
             MySynthesizeViewHolder mySynthesizeViewHolder = (MySynthesizeViewHolder) holder;
-            mySynthesizeViewHolder.setData(mContext, datas,mNumber);
+            mySynthesizeViewHolder.setData(mContext, datas, mNumber);
         }
 
     }
 
     public void setNumber(int number) {
         mNumber = number;
+    }
+
+    public void setData(SearchBean data) {
+        datas = data;
     }
 
 
@@ -98,10 +102,10 @@ public class MysynthesisAdapter extends RecyclerView.Adapter {
                 }
             });
 
-            if (mAdapter != null) {
+            if (mAdapter != null && datas != null) {
                 mAdapter.setNumber(number);
-
-                mAdapter.notifyDataSetChanged();
+                mAdapter.setData(datas.getData().getItems().getArchive());
+                // mAdapter.notifyDataSetChanged();
             }
         }
     }

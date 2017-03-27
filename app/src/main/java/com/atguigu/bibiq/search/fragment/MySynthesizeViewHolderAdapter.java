@@ -178,6 +178,12 @@ public class MySynthesizeViewHolderAdapter extends BaseAdapter {
         mNumber = number;
     }
 
+    public void setData(List<SearchBean.DataBean.ItemsBean.ArchiveBean> data) {
+        if(datas != null) {
+            this.datas.addAll(data);
+        }
+    }
+
 
     static class ViewHolder {
         @InjectView(R.id.iv_icon)

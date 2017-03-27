@@ -1,7 +1,8 @@
-package com.atguigu.bibiq.search;
+package com.atguigu.bibiq.search.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -18,12 +19,13 @@ import butterknife.InjectView;
  * QQ/微信: 642609666} on 3/26 0026.
  * 功能:
  */
-public class MyBaseAdapter extends BaseAdapter {
+public class MyBaseAdapter2 extends BaseAdapter {
     private final Context mContext;
     private String[] datas;
     private int temp;
+    private int mDataNumber = 0;
 
-    public MyBaseAdapter(Context context) {
+    public MyBaseAdapter2(Context context) {
         this.mContext = context;
     }
 
@@ -43,8 +45,7 @@ public class MyBaseAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        temp = position;
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             convertView = View.inflate(mContext, R.layout.adapter_search_item, null);
@@ -54,19 +55,34 @@ public class MyBaseAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.tbName.setText(datas[position]);
-        if(temp == position) {
-            viewHolder.tbName.setTextColor(Color.parseColor("#FFFFFF"));
-            viewHolder.tbName.setBackgroundColor(Color.parseColor("#FB7299"));
-        }else{
-            viewHolder.tbName.setTextColor(Color.parseColor("#7F7F7F"));
-            viewHolder.tbName.setBackgroundColor(Color.parseColor("#EAEAEA"));
+
+        final ViewHolder finalViewHolder = viewHolder;
+        viewHolder.tbName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mListener != null) {
+                    mListener.onListener(finalViewHolder.tbName.getText().toString(), position);
+                    Log.e("TAG", "mDataNumber" + mDataNumber + "=====position" + position);
+
+                }
+            }
+        });
+        if (mDataNumber == position) {
+            finalViewHolder.tbName.setTextColor(Color.parseColor("#FFFFFF"));
+            finalViewHolder.tbName.setBackgroundColor(Color.parseColor("#FB7299"));
+        } else {
+            finalViewHolder.tbName.setTextColor(Color.parseColor("#7F7F7F"));
+            finalViewHolder.tbName.setBackgroundColor(Color.parseColor("#EAEAEA"));
         }
-        temp = position;
         return convertView;
     }
 
     public void setData(String[] lift) {
         this.datas = lift;
+    }
+
+    public void setDataNumber(int dataNumber) {
+        mDataNumber = dataNumber;
     }
 
     static class ViewHolder {
@@ -76,5 +92,15 @@ public class MyBaseAdapter extends BaseAdapter {
         ViewHolder(View view) {
             ButterKnife.inject(this, view);
         }
+    }
+
+    public void setListener(IonClickListener listener) {
+        mListener = listener;
+    }
+
+    private IonClickListener mListener;
+
+    public interface IonClickListener {
+        void onListener(String name, int position);
     }
 }

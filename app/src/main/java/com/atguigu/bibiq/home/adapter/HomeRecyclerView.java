@@ -377,13 +377,6 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
 
                 gridview.setAdapter(mAdapter);
 
-                gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(context, "position==" + position, Toast.LENGTH_SHORT).show();
-                        Log.e("TAG", "11111");
-                    }
-                });
 
                 ll_home_title_btn.setOnClickListener(new View.OnClickListener() {
                     @Override

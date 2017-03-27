@@ -1,15 +1,16 @@
 package com.atguigu.bibiq.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeStreamingBean;
+import com.atguigu.bibiq.gsyvideoplay.DanmkuVideoActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -84,7 +85,8 @@ public class StreamingBaseAdapter extends BaseAdapter {
         viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "position = " + finalPosition, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+                mContext.startActivity(intent);
             }
         });
         return convertView;

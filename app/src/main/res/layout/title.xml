@@ -60,6 +60,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_toolbar_menu_search"/>
 </LinearLayout>

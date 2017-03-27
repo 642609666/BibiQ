@@ -43,5 +43,6 @@ dependencies {
 
     //视频
     compile 'com.shuyu:GSYVideoPlayer:1.6.1'
-    //compile 'com.github.CarGuo:GSYVideoPlayer:v1.6.1'
+    compile 'com.github.ctiao:dfm:0.7.3'
+
 }

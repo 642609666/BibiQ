@@ -83,12 +83,16 @@ public class RecommendFragment extends BaseFragment {
                     @Override
                     public void onError(Call call, Exception e, int id) {
                         Log.e("TAG", "推荐加载数据成失败" + e.getMessage());
-                        swipeRefreshLayout.setRefreshing(false);
+                        if (swipeRefreshLayout != null) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        swipeRefreshLayout.setRefreshing(false);
+                        if (swipeRefreshLayout != null) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                         Log.e("TAG", "推荐加载数据成功");
                         initJson(response);
                     }
