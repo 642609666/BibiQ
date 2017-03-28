@@ -10,7 +10,8 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <!-- 请求访问网络状态 -->
     <!-- 请求访问网络 -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -47,8 +48,11 @@
         </activity>
         <activity android:name=".search.SearchActivity">
         </activity>
-        <activity android:name=".gsyvideoplay.DanmkuVideoActivity"
+        <activity
+            android:name=".gsyvideoplay.DanmkuVideoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity android:name=".shopping.ShoppingActivity">
         </activity>
     </application>
 

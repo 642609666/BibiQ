@@ -24,6 +24,7 @@ import com.atguigu.bibiq.find.activity.OriginalActivity;
 import com.atguigu.bibiq.find.activity.TopicActivity;
 import com.atguigu.bibiq.find.bean.FindBean;
 import com.atguigu.bibiq.search.SearchActivity;
+import com.atguigu.bibiq.shopping.ShoppingActivity;
 import com.atguigu.bibiq.utils.ConstantAddress;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -234,7 +235,8 @@ public class findFragment extends BaseFragment {
                 Toast.makeText(getActivity(), "游戏中心", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_find_shopping:
-                Toast.makeText(getActivity(), "周边商城", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "周边商城", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ShoppingActivity.class));
                 break;
         }
     }

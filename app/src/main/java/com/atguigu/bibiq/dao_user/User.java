@@ -42,6 +42,7 @@ public class User {
     private double price;
     private int number;
     private String image;
+    private boolean mBoolean;
     @Transient
     private int tempUsageCount; // not persisted
     public String getImage() {
@@ -74,13 +75,21 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
-    @Generated(hash = 374528589)
-    public User(Long id, String name, double price, int number, String image) {
+    public boolean getMBoolean() {
+        return this.mBoolean;
+    }
+    public void setMBoolean(boolean mBoolean) {
+        this.mBoolean = mBoolean;
+    }
+    @Generated(hash = 1364406396)
+    public User(Long id, String name, double price, int number, String image,
+            boolean mBoolean) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.number = number;
         this.image = image;
+        this.mBoolean = mBoolean;
     }
     @Generated(hash = 586692638)
     public User() {
