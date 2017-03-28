@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.atguigu.bibiq"
-          android:versionCode="205"
-          android:versionName="2.0.5">
-    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="17" />
+         >
+   />
     <!-- Required 自定义用来收发消息的相关权限 -->
     <permission
-        android:name="${applicationId}.permission.JPUSH_MESSAGE"
+        android:name="com.atguigu.bibiq.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
     <!-- Required 一些系统要求的权限，如访问网络等-->
@@ -84,6 +83,8 @@
         </activity>
         <activity android:name=".shopping.ShoppingActivity">
         </activity>
+        <activity android:name=".activity.WebJiGuangActivity">
+        </activity>
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -104,7 +105,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="${applicationId}" />
+                <category android:name="com.atguigu.bibiq" />
             </intent-filter>
         </activity>
 
@@ -138,7 +139,7 @@
             android:exported="true">
             <intent-filter >
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="${applicationId}"/>
+                <category android:name="com.atguigu.bibiq"/>
             </intent-filter>
         </service>
 
@@ -146,10 +147,10 @@
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
-            android:exported="false">
+            >
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" /> <!--Required 显示通知栏 -->
-                <category android:name="${applicationId}" />
+                <category android:name="com.atguigu.bibiq" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -178,7 +179,7 @@
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required 用户打开自定义通知栏的intent-->
                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
                 <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
-                <category android:name="${applicationId}" />
+                <category android:name="com.atguigu.bibiq" />
             </intent-filter>
         </receiver>
 
