@@ -11,7 +11,7 @@
     <!-- 请求访问网络状态 -->
     <!-- 请求访问网络 -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
-
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -54,6 +54,16 @@
         </activity>
         <activity android:name=".shopping.ShoppingActivity">
         </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
     </application>
 
 </manifest>
