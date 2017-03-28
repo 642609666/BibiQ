@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.atguigu.bibiq.activity.WebActivity;
+import com.atguigu.bibiq.activity.WebJiGuangActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,13 +63,13 @@ public class MyReceiver extends BroadcastReceiver {
 
 
             //打开自定义的Activity
-            Intent i = new Intent(context, WebActivity.class);
+            Intent i = new Intent(context, WebJiGuangActivity.class);
             i.putExtra("url", newsurl);
-
+            context.startActivity(i);
 
             //i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            context.startActivity(i);
+          //  i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
 
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));

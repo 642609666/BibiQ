@@ -1,6 +1,7 @@
 package com.atguigu.bibiq.activity;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -20,8 +21,8 @@ import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.find.fragment.findFragment;
 import com.atguigu.bibiq.home.HomeFragment;
-import com.atguigu.bibiq.store.store;
 import com.atguigu.bibiq.recommend.RecommendFragment;
+import com.atguigu.bibiq.store.store;
 import com.atguigu.bibiq.tothem.ToThemFragment;
 import com.atguigu.bibiq.type.TypeFragment;
 
@@ -161,6 +162,23 @@ public class MainActivity extends BaseActivity {
         });
         //设置rudion 按钮点击事件
         switchRb();
+    }
+
+    private Handler mHandler = new Handler();
+    private boolean mBoolean = false;
+    @Override
+    public void onBackPressed() {
+        if (mBoolean) {
+            finish();
+        }
+        Toast.makeText(MainActivity.this, "再按一次退出", Toast.LENGTH_SHORT).show();
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mBoolean = false;
+            }
+        }, 2000);
+        mBoolean = true;
     }
 
     /**
