@@ -10,6 +10,8 @@ import android.util.Log;
 import com.anye.greendao.gen.DaoMaster;
 import com.anye.greendao.gen.DaoSession;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 /**
  * Created by ${
@@ -63,6 +65,10 @@ public class MyApplication extends Application {
 
         instances = this;
         setDatabase();
+
+        //初始化极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
     public static MyApplication getInstances(){
         return instances;
