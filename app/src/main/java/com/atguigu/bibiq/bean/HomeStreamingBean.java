@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * 功能:
  */
 
-public class HomeStreamingBean {
+public class HomeStreamingBean implements Serializable{
 
     /**
      * code : 0
@@ -45,7 +46,7 @@ public class HomeStreamingBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * owner : {"face":"http://i2.hdslb.com/bfs/face/39f3f9d4f1a0679a3409ee8b76ea8737307ba6b4.jpg","mid":352577,"name":"淳色"}
          * cover : {"src":"http://i0.hdslb.com/bfs/live/1844209d7a58f61adfb117f34fd844ee09d98bd9.jpg","height":180,"width":320}

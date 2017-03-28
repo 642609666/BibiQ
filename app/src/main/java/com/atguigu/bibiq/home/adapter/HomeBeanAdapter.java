@@ -1,15 +1,16 @@
 package com.atguigu.bibiq.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.bean.HomeBean;
+import com.atguigu.bibiq.gsyvideoplay.DanmkuVideoActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -71,7 +72,13 @@ public class HomeBeanAdapter extends BaseAdapter {
         viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "position==" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+                intent.putExtra("url_play", lives.get(position).getPlayurl());
+                intent.putExtra("url_title", lives.get(position).getTitle());
+                intent.putExtra("url_name", lives.get(position).getOwner().getName());
+                intent.putExtra("url_face", lives.get(position).getOwner().getFace());
+                intent.putExtra("url_online", lives.get(position).getOnline()+"");
+                mContext.startActivity(intent);
             }
         });
         int online = lives.get(position).getOnline();

@@ -1,5 +1,6 @@
 package com.atguigu.bibiq.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -309,7 +310,7 @@ public class HomeBean {
                 }
             }
 
-            public static class LivesBean {
+            public static class LivesBean implements Serializable{
                 /**
                  * owner : {"face":"http://i2.hdslb.com/bfs/face/8d94398f56cbe70735236d84918ee802309f81d2.jpg","mid":40203536,"name":"妖小蛮"}
                  * cover : {"src":"http://i0.hdslb.com/bfs/live/a814bdf6fc452fe278cd00074b422b14c99f9806.jpg","height":180,"width":320}

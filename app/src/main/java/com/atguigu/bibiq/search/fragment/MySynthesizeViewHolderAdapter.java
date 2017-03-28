@@ -93,7 +93,7 @@ public class MySynthesizeViewHolderAdapter extends BaseAdapter {
                 .diskCacheStrategy(DiskCacheStrategy.RESULT)
                 .into(viewHolder.ivIcon);
 
-        //播放时间
+        //播放时间  换算 2:2  444:2    00:02:02   07:24:02
         String duration = datas.get(position).getDuration();
         String[] split = duration.split(":");
         int fen = Integer.parseInt(split[0]);

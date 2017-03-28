@@ -52,7 +52,8 @@ public class DanmakuVideoPlayer extends StandardGSYVideoPlayer {
 
     private long mDanmakuStartSeekPosition = -1;
 
-    private boolean mDanmaKuShow = true;
+    //弹幕是否播放就显示
+    private boolean mDanmaKuShow = false;
 
     public DanmakuVideoPlayer(Context context, Boolean fullFlag) {
         super(context, fullFlag);
@@ -135,7 +136,7 @@ public class DanmakuVideoPlayer extends StandardGSYVideoPlayer {
         super.onClick(v);
         switch (v.getId()) {
             case R.id.send_danmaku:
-                addDanmaku(true);
+                addDanmaku(false);
                 break;
             case R.id.toogle_danmaku:
                 mDanmaKuShow = !mDanmaKuShow;

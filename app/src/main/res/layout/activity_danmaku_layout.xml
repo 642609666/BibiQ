@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_detail_player"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                android:id="@+id/activity_detail_player"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/post_detail_nested_scroll"
@@ -12,55 +12,135 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="250dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:gravity="center_vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_view_icon"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/bili_default_avatar"/>
+
+                <TextView
+                    android:id="@+id/tv_view_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_view_icon"
+                    android:text="我是一个一本正经的主播"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:id="@+id/btn_view_vip"
+                    android:layout_width="45dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/tv_view_title"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/iv_view_icon"
+                    android:background="@drawable/btn_view_shape"
+                    android:gravity="center"
+                    android:src="@drawable/ic_more_grey_small"
+                    android:text="UP23"
+                    android:textColor="@color/btn_view"/>
+
+                <TextView
+                    android:id="@+id/iv_view_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/btn_view_vip"
+                    android:layout_alignTop="@id/btn_view_vip"
+                    android:layout_below="@id/tv_view_title"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/btn_view_vip"
+                    android:text="粉嘟嘟主播"
+                    android:textColor="@color/back_main"/>
+
+                <TextView
+                    android:id="@+id/tv_view_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_view_name"
+                    android:layout_marginTop="3dp"
+                    android:layout_toRightOf="@id/iv_view_icon"
+                    android:drawableLeft="@drawable/ic_watching"
+                    android:drawablePadding="3dp"
+                    android:text="3333"/>
+
+                <Button
+                    android:id="@+id/btn_view_attention"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/btn_attention_sa"
+                    android:gravity="center"
+                    android:text="+关注"
+                    android:textColor="@color/title_white"
+                    android:textSize="20sp"/>
+
+                <Button
+                    android:id="@+id/btn_view_attention_number"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@+id/iv_view_name"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/btn_view_attention"
+                    android:background="@drawable/btn_view_number_sa"
+                    android:text="2.9万"
+                    android:textColor="@color/black_lucency"/>
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/btn_black_cinereus"/>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
+                style="@style/MyCustomTabLayout3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="我发斯蒂芬是打发阿斯蒂芬撒地我发斯蒂芬是打发阿斯蒂芬撒地方我打发阿斯
-        发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂打发阿斯蒂芬撒地方我蒂芬撒发
-        我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂撒地方芬是打发阿斯蒂打发阿斯蒂芬撒地方我撒地方我我蒂芬撒
-        芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒
-        地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地撒
-        撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是阿斯蒂芬撒地撒
-        打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打撒
-        发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿
-        芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方我发斯蒂芬是打发阿
-        发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂打发阿斯蒂芬撒地方我蒂芬撒发
-        我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂撒地方芬是打发阿斯蒂打发阿斯蒂芬撒地方我撒地方我我蒂芬撒
-        芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒
-        地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地撒
-        撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是阿斯蒂芬撒地撒
-        打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打撒
-        发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿
-        芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方我发斯蒂芬是打发阿
-        发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂打发阿斯蒂芬撒地方我蒂芬撒发
-        我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂撒地方芬是打发阿斯蒂打发阿斯蒂芬撒地方我撒地方我我蒂芬撒
-        芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒
-        地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地撒
-        撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是阿斯蒂芬撒地撒
-        打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打撒
-        发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿
-        芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方我发斯蒂芬是打发阿
-        发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂打发阿斯蒂芬撒地方我蒂芬撒发
-        我发斯蒂芬是打发阿斯蒂芬撒地方我发斯蒂撒地方芬是打发阿斯蒂打发阿斯蒂芬撒地方我撒地方我我蒂芬撒
-        芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒
-        地方方撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是打发阿斯蒂芬撒地方方撒地方芬是打发阿斯蒂芬撒地撒
-        撒地方芬是打发阿斯蒂芬撒地方我发斯蒂芬是撒地方芬是打发阿斯蒂芬撒地方我发"
-                android:textSize="16sp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/btn_black_cinereus"/>
 
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="340dp"/>
+
     <com.atguigu.bibiq.gsyvideoplay.DanmakuVideoPlayer
         android:id="@+id/danmaku_player"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="250dp"/>
+
+    <ImageView
+        android:id="@+id/iv_view_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"/>
 
 </RelativeLayout>

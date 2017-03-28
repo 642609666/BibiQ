@@ -47,7 +47,8 @@
         </activity>
         <activity android:name=".search.SearchActivity">
         </activity>
-        <activity android:name=".gsyvideoplay.DanmkuVideoActivity">
+        <activity android:name=".gsyvideoplay.DanmkuVideoActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
     </application>
 

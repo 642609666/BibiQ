@@ -82,10 +82,17 @@ public class StreamingBaseAdapter extends BaseAdapter {
         }
 
         final int finalPosition = position;
+        final int finalPosition1 = position;
         viewHolder.ivStreamingImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, DanmkuVideoActivity.class);
+                intent.putExtra("url_play", homeStreamingBeanData.get(finalPosition1).getPlayurl());
+                intent.putExtra("url_title", homeStreamingBeanData.get(finalPosition1).getTitle());
+                intent.putExtra("url_name", homeStreamingBeanData.get(finalPosition1).getOwner().getName());
+                intent.putExtra("url_face", homeStreamingBeanData.get(finalPosition1).getOwner().getFace());
+                intent.putExtra("url_online", homeStreamingBeanData.get(finalPosition1).getOnline()+"");
+
                 mContext.startActivity(intent);
             }
         });
