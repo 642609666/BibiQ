@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.tothem;
+package com.atguigu.bibiq.tothem.presenter;
 
 import android.content.Context;
 import android.support.v7.widget.CardView;

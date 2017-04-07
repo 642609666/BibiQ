@@ -26,6 +26,7 @@ import com.atguigu.bibiq.find.bean.FindBean;
 import com.atguigu.bibiq.search.SearchActivity;
 import com.atguigu.bibiq.shopping.ShoppingActivity;
 import com.atguigu.bibiq.utils.ConstantAddress;
+import com.atguigu.bibiq.zxing.android.CaptureActivity;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -34,6 +35,8 @@ import java.util.List;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
+
+import static com.atguigu.bibiq.base.BaseActivity.REQUEST_CODE_SCAN;
 
 /**
  * Created by ${
@@ -190,6 +193,11 @@ public class findFragment extends BaseFragment {
                 break;
             case R.id.iv_find_saoyisao:
                 Toast.makeText(getActivity(), "扫一扫", Toast.LENGTH_SHORT).show();
+                MainActivity activity = (MainActivity) getActivity();
+                //这里处理逻辑
+                Intent intent = new Intent(activity,
+                        CaptureActivity.class);
+                activity.startActivityForResult(intent, REQUEST_CODE_SCAN);
                 break;
             case R.id.ll_find_more:
                 if (isDwonOrUp) {

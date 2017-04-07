@@ -50,6 +50,7 @@ import butterknife.InjectView;
  * #         QQ/微信: 642609666       李岩              #
  */
 public class MyShoppingAdapter1 extends BaseAdapter {
+
     private final Context mContext;
     private final UserDao mUserDao;
     private boolean isAdd = true;
@@ -113,8 +114,8 @@ public class MyShoppingAdapter1 extends BaseAdapter {
                 }
 
                 //改变数值后,监听
-                isNumber(position,number);
-                if(onNumberChekebox!= null) {
+                isNumber(position, number);
+                if (onNumberChekebox != null) {
                     onNumberChekebox.onNumberlistener();
                 }
 
@@ -147,9 +148,9 @@ public class MyShoppingAdapter1 extends BaseAdapter {
                 int number = Integer.parseInt(text);
                 number += 1;
                 finalViewHolder.btnNumber.setText(number + "");
-               // finalViewHolder.checkbox.setChecked(true);
+                // finalViewHolder.checkbox.setChecked(true);
                 Log.e("TAG", "加 " + number);
-               // isTrue(position, true);
+                // isTrue(position, true);
                 //如果全部选中就传递给主界面
 //                if (query()) {
 //                    if (mOnallChekebox != null) {
@@ -162,8 +163,8 @@ public class MyShoppingAdapter1 extends BaseAdapter {
 //                }
 
                 //改变数值后,监听
-                isNumber(position,number);
-                if(onNumberChekebox!= null) {
+                isNumber(position, number);
+                if (onNumberChekebox != null) {
                     onNumberChekebox.onNumberlistener();
                 }
 
@@ -202,6 +203,7 @@ public class MyShoppingAdapter1 extends BaseAdapter {
         user.setMBoolean(b);
         mUserDao.update(user);
     }
+
     /**
      * 修改数据库的数量
      *
@@ -213,6 +215,7 @@ public class MyShoppingAdapter1 extends BaseAdapter {
         mUserDao.update(user);
         Log.e("TAG", "改变" + user.getNumber());
     }
+
     /**
      * 查询是否全部选中
      *
@@ -286,7 +289,6 @@ public class MyShoppingAdapter1 extends BaseAdapter {
     }
 
 
-
     /**
      * 改变数值的选中的回调
      *
@@ -295,6 +297,7 @@ public class MyShoppingAdapter1 extends BaseAdapter {
     public void setOnNumberChekebox(setOnNumberChekebox onNumberChekebox) {
         this.onNumberChekebox = onNumberChekebox;
     }
+
     private setOnNumberChekebox onNumberChekebox;
 
     public interface setOnNumberChekebox {

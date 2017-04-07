@@ -70,11 +70,9 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
 
     int temp = BANNER;
 
-    public HomeRecyclerView(Context context, HomeBean.DataBean banner) {
 
+    public HomeRecyclerView(Context context) {
         this.mContext = context;
-        this.datas = banner;
-
         inflater = LayoutInflater.from(context);
     }
 
@@ -85,7 +83,19 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
      */
     @Override
     public int getItemCount() {
-        return datas.getPartitions().size() + 3 + 1;
+        if (datas == null && homeStreamingBeanData == null) {
+            Log.e("TAG", "0");
+            return 0;
+        } else if (datas != null && datas.getBanner().size() > 0 && homeStreamingBeanData == null) {
+            Log.e("TAG", "3");
+            return 3;
+        } else if (datas != null && datas.getBanner().size() > 0 && homeStreamingBeanData != null && homeStreamingBeanData.size() > 0) {
+            Log.e("TAG", "17");
+            return datas.getPartitions().size() + 3 + 1;
+        } else {
+            Log.e("TAG", "else 0");
+            return 0;
+        }
     }
 
     /**
@@ -172,7 +182,12 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
      * @param mHomeStreamingBeanData
      */
     public void setmHomeStreamingBeanData(List<HomeStreamingBean.DataBean> mHomeStreamingBeanData) {
-        this.homeStreamingBeanData = mHomeStreamingBeanData;
+        if (homeStreamingBeanData != null) {
+            homeStreamingBeanData.clear();
+            homeStreamingBeanData.addAll(mHomeStreamingBeanData);
+        } else {
+            this.homeStreamingBeanData = mHomeStreamingBeanData;
+        }
     }
 
     /**
@@ -222,6 +237,17 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
         } else if (BUTTON == position) {
             MyButtonViewHolder myButtonViewHolder = (MyButtonViewHolder) holder;
             myButtonViewHolder.setData(mContext);
+        }
+    }
+
+    public void setmHomeBeanData(HomeBean.DataBean MHomeBeanData) {
+        if (datas != null) {
+            // datas.getBanner().clear();
+            // datas.getPartitions().clear();
+            //  datas.getEntranceIcons().clear();
+            this.datas = MHomeBeanData;
+        } else {
+            this.datas = MHomeBeanData;
         }
     }
 
@@ -313,23 +339,23 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
             gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                   switch (position) {
-                       case  0:
-                           context.startActivity(new Intent(context, LoginActivity.class));
-                           break;
-                       case  1:
-                           context.startActivity(new Intent(context, LoginActivity.class));
-                           break;
-                       case  2:
-                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
-                           break;
-                       case  3:
-                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
-                           break;
-                       case  4:
-                           Toast.makeText(context, ""+mList.get(position), Toast.LENGTH_SHORT).show();
-                           break;
-                   }
+                    switch (position) {
+                        case 0:
+                            context.startActivity(new Intent(context, LoginActivity.class));
+                            break;
+                        case 1:
+                            context.startActivity(new Intent(context, LoginActivity.class));
+                            break;
+                        case 2:
+                            Toast.makeText(context, "" + mList.get(position), Toast.LENGTH_SHORT).show();
+                            break;
+                        case 3:
+                            Toast.makeText(context, "" + mList.get(position), Toast.LENGTH_SHORT).show();
+                            break;
+                        case 4:
+                            Toast.makeText(context, "" + mList.get(position), Toast.LENGTH_SHORT).show();
+                            break;
+                    }
                 }
             });
         }
@@ -722,6 +748,7 @@ public class HomeRecyclerView extends RecyclerView.Adapter {
      */
     private class MyButtonViewHolder extends RecyclerView.ViewHolder {
         Button btn_button;
+
         public MyButtonViewHolder(View view) {
             super(view);
             btn_button = (Button) view.findViewById(R.id.btn_button);

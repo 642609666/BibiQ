@@ -150,7 +150,9 @@ public class SearchFragment extends DialogFragment implements DialogInterface.On
             searchHistoryAdapter.notifyDataSetChanged();
         } else if (view.getId() == R.id.iv_search_scan) {
             //二维码点击的事件
-            iOnSearchClickListener.OnScanClick();
+            if (iOnSearchClickListener != null) {
+                iOnSearchClickListener.OnScanClick();
+            }
         }
     }
 

@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.tothem;
+package com.atguigu.bibiq.tothem.view;
 
 import android.graphics.Color;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.atguigu.bibiq.R;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.tothem.bean.ToThemBean;
+import com.atguigu.bibiq.tothem.presenter.MyToThemRecyclerView;
 import com.atguigu.bibiq.utils.ConstantAddress;
 
 import butterknife.InjectView;

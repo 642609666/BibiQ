@@ -20,11 +20,12 @@ import com.atguigu.bibiq.adapter.MainViewPagerAdapter;
 import com.atguigu.bibiq.base.BaseActivity;
 import com.atguigu.bibiq.base.BaseFragment;
 import com.atguigu.bibiq.find.fragment.findFragment;
-import com.atguigu.bibiq.home.HomeFragment;
-import com.atguigu.bibiq.recommend.RecommendFragment;
+import com.atguigu.bibiq.home.view.HomeFragment;
+import com.atguigu.bibiq.recommend.view.RecommendFragment;
 import com.atguigu.bibiq.store.store;
-import com.atguigu.bibiq.tothem.ToThemFragment;
+import com.atguigu.bibiq.tothem.view.ToThemFragment;
 import com.atguigu.bibiq.type.TypeFragment;
+import com.atguigu.bibiq.utils.ImmerseUtils;
 
 import java.util.ArrayList;
 
@@ -94,7 +95,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
     }
 
     @Override
@@ -166,6 +166,7 @@ public class MainActivity extends BaseActivity {
 
     private Handler mHandler = new Handler();
     private boolean mBoolean = false;
+
     @Override
     public void onBackPressed() {
         if (mBoolean) {
@@ -260,7 +261,8 @@ public class MainActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.ll_more: //点击出来侧滑
-                Toast.makeText(MainActivity.this, "侧滑出来", Toast.LENGTH_SHORT).show();
+                ImmerseUtils.showImmerse(MainActivity.this);
+                // Toast.makeText(MainActivity.this, "侧滑出来", Toast.LENGTH_SHORT).show();
                 drawlayout.openDrawer(Gravity.LEFT);
 
                 break;

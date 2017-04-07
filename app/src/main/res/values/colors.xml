@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FB7299</color>
+    <color name="colorPrimaryDark">#FB7299</color>
     <color name="colorAccent">#FF4081</color>
     <color name="btn_red">#FF0000</color>
     <color name="back_main">#FB7299</color>
@@ -15,6 +15,12 @@
     <color name="type_fragment_back">#DCDCDC</color>
     <color name="title_back">#FAFAFA</color>
     <color name="black_lucency">#778B8987</color>
-    <color name="btn_view">#A068F1</color>
 
+
+    <color name="btn_view">#A068F1</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <color name="status_text">#ffffffff</color>
 </resources>

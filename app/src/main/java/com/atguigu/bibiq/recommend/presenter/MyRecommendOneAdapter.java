@@ -1,4 +1,4 @@
-package com.atguigu.bibiq.recommend;
+package com.atguigu.bibiq.recommend.presenter;
 
 import android.content.Context;
 import android.graphics.Bitmap;

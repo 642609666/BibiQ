@@ -1,4 +1,4 @@
-package com.atguigu.bibiq;
+package com.atguigu.bibiq.seceiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

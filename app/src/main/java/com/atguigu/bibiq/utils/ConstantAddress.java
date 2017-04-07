@@ -14,13 +14,22 @@ public class ConstantAddress {
     /**
      * 首页地址
      */
-    public static final String BBQ_HOME = "http://live.bilibili.com/AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_" +
-            "app=android&platform=android&scale=hdpi&ts=1490013188000&sign=92541a11ed62841120e786e637b9db3b";
+    public static final String BBQ_HOME = "http://live.bilibili.com/";
     /**
      * 推荐直播
      */
-    public static final String STREAMING = "http://live.bilibili.com/mobile/rooms?_device=android&appkey=1d8b6e7d45233436&area_id=0&build=501000&mobi_app" +
-            "=android&page=1&platform=android&sort=hottest&ts=1490016354000&sign=8cc71690abffd8d3b2c18ef1b548630f";
+    public static final String STREAMING = "http://live.bilibili.com/";
+
+    /**
+     * 首页地址尾
+     */
+    public static final String BBQ_HOME_END = "AppNewIndex/common?_device=android&appkey=1d8b6e7d45233436&build=501000&mobi_\" +\n" +
+            "            \"app=android&platform=android&scale=hdpi&ts=1490013188000&sign=92541a11ed62841120e786e637b9db3b";
+    /**
+     * 推荐直播尾
+     */
+    public static final String STREAMING_END = "mobile/rooms?_device=android&appkey=1d8b6e7d45233436&area_id=0&build=501000&mobi_app\" +\n" +
+            "            \"=android&page=1&platform=android&sort=hottest&ts=1490016354000&sign=8cc71690abffd8d3b2c18ef1b548630f";
 
     /**
      * 发现界面热搜数据
@@ -44,9 +53,11 @@ public class ConstantAddress {
     /**
      * 推荐页面
      */
-    public static final String BBQ_RECOMMERD = "http://app.bilibili.com/x/feed/index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&" +
-            "platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
-
+    public static final String BBQ_RECOMMERD = "http://app.bilibili.com/x/feed/";
+    /**
+     * 推荐页面后续
+     */
+    public static final String BBQ_RECOMMERD_END = "index?appkey=1d8b6e7d45233436&build=501000&idx=1490013261&mobi_app=android&network=wifi&platform=android&pull=true&style=2&ts=1490015599000&sign=af4edc66aef7e443c98c28de2b660aa4";
     /**
      * 话题中心数据
      */
